@@ -59,6 +59,7 @@ char *endptr;
 static int hardFlag=0;
 static int postFlag=0;
 
+
 static void split_input(void)
 {
   /* r points to the last non-space character */
@@ -335,7 +336,8 @@ void cmd_memory(void)
 {
   if (token[1][0] == 0) {
     SetDataToEngine( "memory" );
-    ExpectAnswerFromEngine( true );
+    //ExpectAnswerFromEngine( true );
+    ExpectAnswerFromEngine( false );
   } else {
     unsigned int memory;
     if ( sscanf( token[1], "%d", &memory ) == 1 ) {
@@ -615,7 +617,8 @@ void cmd_post(void)
   postFlag = 1;
   if ( hardFlag && postFlag )
     ExpectAnswerFromEngine( true );
-  ExpectAnswerFromEngine( true );
+  //ExpectAnswerFromEngine( true );
+  ExpectAnswerFromEngine( false );
   SetDataToEngine( token[0] );
 }
 

@@ -23,9 +23,14 @@
      cracraft@ai.mit.edu, cracraft@stanfordalumni.org, cracraft@earthlink.net
 */
 
+#ifndef COMPONENTS_H
+#define COMPONENTS_H
+
 #include <pthread.h>
 
 /* File descriptors for the pipes to be used to communicate frontend, adapter and engine */
+
+extern int pipefd_i2f[2];
 
 extern int pipefd_f2a[2];
 extern int pipefd_a2f[2];
@@ -39,12 +44,16 @@ extern pthread_t adapter_thread;
 /*
  * Entry point for the adapter thread
  */
+void *input_func(void *arg);
 void *adapter_func(void *arg);
 void *engine_func(void *arg);
 
 /*
  * Starts the adapter (based on Polyglot 1.4) on a separate thread.
  */
+void InitInput();
 void InitAdapter();
 void InitEngine();
 void TerminateAdapterEngine();
+
+#endif /* COMPONENTS_H */

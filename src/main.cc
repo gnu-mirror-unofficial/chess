@@ -487,7 +487,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       ForwardEngineOutputToUser();
     } else { /* Classical GNU Chess mode */
       /* Prompt the user, if neither in xboard nor uci mode */
-      ShowPrompt();
+      //ShowPrompt();
       /* Check if there is a new command from the user */
       NextUserCmd();
       /* Show thinking message */

@@ -29,6 +29,7 @@
 #define COMMON_H
 
 #include <config.h>
+#include <pthread.h>
 
 #ifndef __GNUC__
 # define __attribute__(x)
@@ -482,6 +483,38 @@ void DBReadPlayer (void);
 void DBWritePlayer (void);
 int DBSearchPlayer (const char *player);
 void DBUpdatePlayer (const char *player, const char *resultstr);
+
+/* Input thread and thread function */
+extern pthread_t input_thread;
+void *input_func(void *);
+
+/*
+ * Status variable used by the input thread to signal
+ * pending input. Thought about using flags for this
+ * but this can be refined and is conceptually different
+ * from flags.
+ */
+enum {
+  INPUT_NONE,
+  INPUT_AVAILABLE
+};
+extern volatile int input_status;
+
+/*
+ * Function to wake up the input thread, should be called after
+ * input has been parsed.
+ */
+void input_wakeup(void);
+
+/* Wait for input. */
+
+//void wait_for_input(void);
+
+/*
+ * Input routine, initialized to one of the specific
+ * input routines. The given argument is the prompt.
+ */
+extern void (*get_line) (char *);
 
 #define BUF_SIZE 4096
 

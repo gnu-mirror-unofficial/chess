@@ -46,11 +46,16 @@ namespace engine {
   int main_engine(int argc,char *argv[]);
 }
 
+/* Input thread */
+pthread_t input_thread;
+
 /* Adapter thread */
 pthread_t adapter_thread;
 
 /* Engine thread */
 pthread_t engine_thread;
+
+int pipefd_i2f[2];
 
 /* Pipes to communicate frontend and adapter */
 int pipefd_f2a[2];
@@ -59,6 +64,30 @@ int pipefd_a2f[2];
 /* Pipes to communicate adapter and engine */
 int pipefd_a2e[2];
 int pipefd_e2a[2];
+
+/*
+ * Entry point for the input thread
+ */
+/*void *input_func(void *arg)
+{
+  return 0;
+}*/
+
+/*
+ * Starts the input on a separate thread.
+ */
+
+void InitInputThread()
+{
+  /* Create pipes to communicate input and frontend. */
+  if ( pipe( pipefd_i2f ) != 0 ) {
+    printf( "Error while creating pipe.\n" );
+    exit( 1 );
+  }
+
+  /* Start input thread */
+  pthread_create(&input_thread, NULL, input_func, NULL);
+}
 
 /*
  * Entry point for the adapter thread
