@@ -676,6 +676,7 @@ void cmd_remove(void)
 
 void cmd_result(void)
 {
+  /* TODO Do not send to engine */
   SetDataToEngine( token[0] );
   if (ofp != stdout) {
     fprintf(ofp, "result: %s\n",token[1]);
@@ -727,6 +728,7 @@ void cmd_switch(void)
 
 void cmd_time(void)
 {
+  /* TODO send what? */
   SetDataToEngine( token[0] );
   printf( _("Old TimeLimit = %g\n"), TimeLimit[1^board.side] );
   TimeLimit[1^board.side] = atoi(token[1]) / 100.0f ;
@@ -806,6 +808,7 @@ Report bugs to <bug-gnu-chess@gnu.org>.\n\
 /* Play variant, we instruct interface in protover we play normal */
 void cmd_variant(void) {}
 
+/* TODO Not in 5.08 */
 void cmd_usermove(void)
 {
   /* TODO: Remove the first SetDataToEngine */
@@ -889,6 +892,7 @@ void cmd_show (void)
  *
  ************************************************************************/
 {
+   /* TODO Remove gettext support */
    if (tokeneq (token[1], "board"))
       ShowBoard ();
    else if (tokeneq (token[1], "rating"))

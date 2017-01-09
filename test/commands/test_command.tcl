@@ -5,14 +5,16 @@ package require Expect
 variable gnuchessplayer
 variable n_pass
 variable n_fail
+variable failed_test_cases
 
 proc pass { } {
     set ::n_pass [expr $::n_pass + 1]
     puts " ----> PASS"
 }
 
-proc fail { } {
+proc fail {test_case_title} {
     set ::n_fail [expr $::n_fail + 1]
+    lappend ::failed_test_cases $test_case_title
     puts " ----> FAIL"
 }
 
@@ -50,7 +52,7 @@ proc test_case {title steps} {
     if {$test_pass == 1} {
         pass
     } else {
-        fail
+        fail $title
     }
     #test_cleanup
     close
@@ -73,6 +75,7 @@ proc run { } {
     test_case "Command: bk" [list "I bk" "O %)" "O White (1)"]
     test_case "Command: bk" [list "I bk" "O %)" "O White (1)"]
     test_case "Command: black" [list "I black" "O currently not supported" "O White (1)"]
+    test_case "Command: white" [list "I white" "O currently not supported" "O White (1)"]
     test_case "Command: book" [list "I book" "O Incorrect book option" "O White (1)"]
     # TODO book commands
     test_case "Command: depth 1" [list "I depth 1" "O Search to a depth of 1" "O White (1)"]
@@ -231,20 +234,116 @@ proc run { } {
                                "O Time Control: 40 moves in 60.00 secs" \
                                "O Fischer increment of 2 seconds" \
                                "O White (1)"]
-    test_case "Command: list & name" [list "I list ?" \
+    test_case "Command: list & name & result" [list "I list ?" \
                                "O name    - list known players alphabetically" \
                                "O score   - list by GNU best result first" \
                                "O reverse - list by GNU worst result first" \
                                "O White (1)" \
                                "I name Stuart" "I result" "I name Simon" "I result" \
                                "I list name" "O Simon" "O Stuart" "O White (1)"]
-    file delete -force ./log.*
-    file delete -force ./game.*
+    file delete -force ./log.000
+    file delete -force ./log.001
+    file delete -force ./game.000
+    file delete -force ./game.001
     file delete -force ./players.dat
     # FIX test_case "Command: memory" [list "I memory" "O Current HashSize is 256 MB" "O White (1)" \
                                       "I memory 128" "O Current HashSize is 128 MB" "O White (1)"]
     test_case "Command: new" [list "I new" "O White (1)" "I depth 1" "I e4" "O White (2)" "I new" "O White (1)"]
-    # nopost
+    # FIX test_case "Command: post & nopost" [list "I post" "O 1 +" "O White (1)" "I nopost" "O White (1)"]
+    test_case "Command: null" [list "I null" "O Null-move heuristic is on." "O White (1)" "I null off" "O Null-move heuristic is off." "O White (1)" "I null" "O Null-move heuristic is off." "O White (1)" "I null on" "O Null-move heuristic is on." "O White (1)"]
+    test_case "Command: otim" [list "I otim 1" "O White (1)"]
+    # FIX test_case "Command: ping" [list "I ping" "O pong" "O White (1)"]
+    # FIX test_case "Command: protover" [list "I protover" "O feature setboard=1 analyze=1 ping=1 draw=0 sigint=0 variants="normal" myname="GNU Chess 6.2.5-rc1" done=1" "O White (1)"]
+    test_case "Command: quit" [list "I quit" "O "]
+    test_case "Command: random" [list "I random" "O currently not supported" "O White (1)"]
+    test_case "Command: rating" [list "I rating" "O my rating = 0, opponent rating = 0" "O White (1)"]
+    test_case "Command: rejected" [list "I rejected" "O "]
+    # FIX test_case "Command: remove" [list "I e4" \
+                               #"O . . . . P . . ." \
+                               #"O . . . . . . . ." \
+                               #"O P P P P . P P P" \
+                               #"O R N B Q K B N R" \
+                               #"O White (2)" \
+                           #"I remove" \
+                               #"O . . . . . . . ." \
+                               #"O . . . . . . . ." \
+                               #"O P P P P . P P P" \
+                               #"O R N B Q K B N R" \
+                               #"O White (1)"]
+    test_case "Command: setboard" [list "I setboard 2r2nk1/4qpp1/4p3/p2nN1P1/PpNP4/1PrR1Q2/5P2/4R1K1 w - - bm 1; id 1;" "O White (1)" "I show board" \
+                               "O white" \
+                               "O . . r . . n k ." \
+                               "O . . . . q p p ." \
+                               "O . . . . p . . ." \
+                               "O p . . n N . P ." \
+                               "O P p N P . . . ." \
+                               "O . P r R . Q . ." \
+                               "O . . . . . P . ." \
+                               "O . . . . R . K ." \
+                               "O White (1)"]
+    test_case "Command: show" [list \
+                           "I show board" \
+                               "O white  KQkq" \
+                               "O r n b q k b n r" \
+                               "O p p p p p p p p" \
+                               "O . . . . . . . ." \
+                               "O . . . . . . . ." \
+                               "O . . . . . . . ." \
+                               "O . . . . . . . ." \
+                               "O P P P P P P P P" \
+                               "O R N B Q K B N R" \
+                               "O White (1)" \
+                           "I show rating" \
+                               "O My rating =" \
+                               "O Opponent rating =" \
+                               "O White (1)" \
+                           "I show time" \
+                               "O White (1)" \
+                           "I show moves" \
+                               "O Na3" "O No. of moves generated =" \
+                           "I show escape" \
+                               "O No. of moves generated =" \
+                           "I show noncapture" \
+                               "O Na3" "O No. of moves generated =" \
+                           "I show capture" \
+                               "O No. of moves generated =" \
+                           "I show eval" \
+                               "O currently not supported" \
+                           "I show score" \
+                               "O currently not supported" \
+                           "I e4" "I show game" \
+                               "O White   Black" "O 1.  e4" "O White (2)" \
+                           "I show pin" \
+                               "O currently not supported"]
+    test_case "Command: solve" [list "I depth 1" "I solve ./Polgar-Karpov.epd" "O Best move =" "O My move is :" "O Incorrect" "O Correct=" "O White (1)"]
+    test_case "Command: solveepd" [list "I depth 1" "I solveepd ./Polgar-Karpov.epd" "O Best move =" "O My move is :" "O Incorrect" "O Total=" "O White (1)"]
+    test_case "Command: st" [list "I st 1" "O White (1)"]
+    test_case "Command: switch" [list "I switch" "O currently not supported" "O White (1)"]
+    test_case "Command: test" [list "I test" "O currently not supported" "O White (1)"]
+    test_case "Command: time" [list "I time 1" "O White (1)"]
+    test_case "Command: undo" [list "I depth 1" "I e4" \
+                               "O . . . . P . . ." \
+                               "O . . . . . . . ." \
+                               "O P P P P . P P P" \
+                               "O R N B Q K B N R" \
+                               "O White (2)" \
+                           "I undo" \
+                               "O . . . . P . . ." \
+                               "O . . . . . . . ." \
+                               "O P P P P . P P P" \
+                               "O R N B Q K B N R" \
+                               "O Black (1)" \
+                           "I undo" \
+                               "O . . . . . . . ." \
+                               "O . . . . . . . ." \
+                               "O P P P P P P P P" \
+                               "O R N B Q K B N R" \
+                               "O White (1)"]
+    test_case "Command: usage" [list "I usage" "O Usage:" "O Options:" "O bug-gnu-chess@gnu.org" "O White (1)"]
+    test_case "Command: usermove" [list "I usermove e4" "O White (2)"]
+    test_case "Command: variant" [list "I variant" "O White (1)"]
+    test_case "Command: version" [list "I version" "O GNU Chess 6" "O White (1)"]
+    test_case "Command: xboard" [list "I depth 1" "I e4" "O move" "I new" "I xboard off" "I e4" "O My move is :" "O White (2)" "I new" "O White (1)" "I xboard on" "I e4" "O move"]
 
     # Print results
     puts "====================================================================="
@@ -253,10 +352,14 @@ proc run { } {
         puts "  OK\n"
     } else {
         puts "  FAILURE\n"
+        foreach title $::failed_test_cases {
+            puts "\t$title"
+        }
     }
 }
 
 set n_pass 0
 set n_fail 0
+set failed_test_cases [list]
 set timeout 2
 run
