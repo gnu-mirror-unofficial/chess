@@ -247,13 +247,15 @@ void cmd_hash(void)
 /* Give a possible move for the player to play */
 void cmd_hint(void)
 {
+  /* An answer is received only if book on - TODO change this in adapter */
+  //ExpectAnswerFromEngine( true );
   SetDataToEngine( token[0] );
   /* TODO if no hint, inform on stdout */
 }
 
 void cmd_ics(void)
 {
-  SetDataToEngine( token[0] );
+  SetDataToEngine( "ics *" );
 }
 
 void cmd_level(void)
@@ -335,16 +337,17 @@ void cmd_manual(void)
 void cmd_memory(void)
 {
   if (token[1][0] == 0) {
+    ExpectAnswerFromEngine( true );
     SetDataToEngine( "memory" );
-    //ExpectAnswerFromEngine( true );
-    ExpectAnswerFromEngine( false );
   } else {
     unsigned int memory;
     if ( sscanf( token[1], "%d", &memory ) == 1 ) {
       char data[MAXSTR]="";
       sprintf( data, "memory %d\nmemory", memory );
+      ExpectAnswerFromEngine( true );
       SetDataToEngine( data );
     }
+/* TODO Handle error */
   }
 }
 
@@ -403,6 +406,7 @@ void cmd_nopost(void)
 {
   CLEAR (flags, POST);
   postFlag = 0;
+  ExpectAnswerFromEngine( false );
   SetDataToEngine( token[0] );
 }
 
@@ -602,13 +606,8 @@ void cmd_nographic(void)
 
 void cmd_ping(void)
 {
-  SetDataToEngine( token[0] );
-  /* If ping is received when we are on move, we are supposed to
-     reply only after moving.  In this version of GNU Chess, we
-     never read commands while we are on move, so we don't have to
-     worry about that here. */
-  printf("pong %s\n", token[1]);
-  fflush(stdout);
+  ExpectAnswerFromEngine( true );
+  SetDataToEngine( "ping *" );
 }
 
 void cmd_post(void)
@@ -624,14 +623,9 @@ void cmd_post(void)
 
 void cmd_protover(void)
 {
-  SetDataToEngine( token[0] );
-  return;
   if (flags & XBOARD) {
     /* Note: change this if "draw" command is added, etc. */
-    printf("feature setboard=1 analyze=1 ping=1 draw=0 sigint=0\
- variants=\"normal\" myname=\"%s %s\" done=1\n",
-      PROGRAM, VERSION);
-    fflush(stdout);
+    SetDataToEngine( "protover *" );
   }
 }
 

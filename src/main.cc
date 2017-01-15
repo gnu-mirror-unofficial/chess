@@ -33,6 +33,7 @@
 #include <errno.h>
 #include <unistd.h>
 #include <locale.h>
+#include <signal.h>
 
 #include "frontend/common.h"
 #include "gettext.h"
@@ -213,6 +214,12 @@ int Mask315[64] =
   0xFF, 0x7F, 0x3F, 0x1F, 0x0F, 0x07, 0x03, 0x01 };
 
 extern char userinputbuf[];
+
+void EndProg( int sig __attribute__ ((unused)) )
+{
+    system( "stty sane" );
+    exit(0);
+}
 
 int main (int argc, char *argv[])
 {
@@ -397,6 +404,12 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   if ( opt_memory != 0 )
     ; /* TODO: to be removed - this is handled by the adapter */
 
+  /* Catch SIGINT to exit. */
+  struct sigaction action;
+  memset( &action, 0, sizeof(struct sigaction) );
+  action.sa_handler = EndProg;
+  sigaction( SIGINT, &action, NULL );
+
   Initialize ();
   InitFrontend();
   if ( ! (flags & UCI ) ) {
@@ -510,6 +523,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
 
   /* Termintate adapter and engine threads and join them */
   TerminateAdapterEngine();
+  TerminateInput();
   
   return (0);
 }

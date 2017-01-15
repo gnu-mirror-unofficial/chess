@@ -41,6 +41,9 @@ extern int pipefd_e2a[2];
 /* Adapter thread */
 extern pthread_t adapter_thread;
 
+/* Engine thread */
+extern pthread_t engine_thread;
+
 /*
  * Entry point for the adapter thread
  */
@@ -55,5 +58,6 @@ void InitInput();
 void InitAdapter();
 void InitEngine();
 void TerminateAdapterEngine();
+void TerminateInput();
 
 #endif /* COMPONENTS_H */

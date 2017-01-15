@@ -28,6 +28,7 @@
 #include <cstring>
 #include <unistd.h>
 #include <pthread.h>
+#include <signal.h>
 
 #include "frontend/common.h"
 #include "components.h"
@@ -168,3 +169,7 @@ void TerminateAdapterEngine()
   }
 }
 
+void TerminateInput()
+{
+  pthread_join( input_thread, NULL );
+}

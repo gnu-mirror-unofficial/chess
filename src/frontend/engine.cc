@@ -368,7 +368,9 @@ void NextEngineCmd( void )
         if ( flags & XBOARD ) {
           fflush( stdout );
         }
-        //input_wakeup();
+        if ( AnswerFromEngineExpected() ) {
+          input_wakeup();
+        }
       }
     }
   }

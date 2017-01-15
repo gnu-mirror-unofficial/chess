@@ -84,7 +84,7 @@ proc run { } {
     test_case "Command: hard" [list "I hard" "O White (1)"]
     # TODO Add more complex cases for hard and post
     test_case "Command: edit" [list "xboard" "I edit" "O not implemented"]
-    # FIX test_case "Command: edit" [list "I xboard" "I edit" "O not implemented" "O White (1)"]
+    test_case "Command: edit" [list "I xboard" "I edit" "O not implemented"]
     test_case "Command: epdload" [list "I epdload" "O Error reading file ''" "O White (1)"]
     test_case "Command: epdload" [list "I epdload ./Polgar-Karpov.epd" \
                                "O white" \
@@ -124,7 +124,7 @@ proc run { } {
     test_case "Command: hash" [list "I hash" "O Hashing is on." "O White (1)" "I hash off" "O Hashing is off." "O White (1)" "I hash" "O Hashing is off." "O White (1)" "I hash on" "O Hashing is on." "O White (1)"]
     test_case "Command: help" [list "I help" "O List of commands: (help COMMAND to get more help)" "O White (1)" "I help help" "O help" "O Produces a help blurb corresponding to this list of commands." "O White (1)"]
     # FIX test_case "Command: hint" [list "I hint" "O Hint:" "O White (1)"]
-    # FIX test_case "Command: ics" [list "I ics" "O " "O White (1)"]
+    test_case "Command: ics" [list "I ics" "O " "O White (1)"]
     test_case "Command: pgnload" [list "I pgnload ./Polgar-Karpov.pgn" \
                                "O white" \
                                "O . . r . . n k ." \
@@ -246,14 +246,15 @@ proc run { } {
     file delete -force ./game.000
     file delete -force ./game.001
     file delete -force ./players.dat
-    # FIX test_case "Command: memory" [list "I memory" "O Current HashSize is 256 MB" "O White (1)" \
+    test_case "Command: memory" [list "I memory" "O Current HashSize is 256 MB" "O White (1)" \
                                       "I memory 128" "O Current HashSize is 128 MB" "O White (1)"]
     test_case "Command: new" [list "I new" "O White (1)" "I depth 1" "I e4" "O White (2)" "I new" "O White (1)"]
     # FIX test_case "Command: post & nopost" [list "I post" "O 1 +" "O White (1)" "I nopost" "O White (1)"]
+    test_case "Command: post & nopost" [list "I depth 1" "I post" "O White (1)" "I e4" "O White (2)" "I nopost" "O White (2)"]
     test_case "Command: null" [list "I null" "O Null-move heuristic is on." "O White (1)" "I null off" "O Null-move heuristic is off." "O White (1)" "I null" "O Null-move heuristic is off." "O White (1)" "I null on" "O Null-move heuristic is on." "O White (1)"]
     test_case "Command: otim" [list "I otim 1" "O White (1)"]
-    # FIX test_case "Command: ping" [list "I ping" "O pong" "O White (1)"]
-    # FIX test_case "Command: protover" [list "I protover" "O feature setboard=1 analyze=1 ping=1 draw=0 sigint=0 variants="normal" myname="GNU Chess 6.2.5-rc1" done=1" "O White (1)"]
+    test_case "Command: ping" [list "I ping" "O pong" "O White (1)"]
+    test_case "Command: protover" [list "xboard" "I protover" "O feature"]
     test_case "Command: quit" [list "I quit" "O "]
     test_case "Command: random" [list "I random" "O currently not supported" "O White (1)"]
     test_case "Command: rating" [list "I rating" "O my rating = 0, opponent rating = 0" "O White (1)"]
