@@ -305,7 +305,7 @@ void NextUserCmd( void )
         RealGameCnt = GameCnt;
         RealSide = board.side;
       }
-      if ( !AnswerFromEngineExpected() ) {
+      if ( !AnswerFromEngineExpected() || (flags & MANUAL) ) {
         input_wakeup();
       }
     }

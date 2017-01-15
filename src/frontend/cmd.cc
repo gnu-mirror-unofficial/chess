@@ -330,8 +330,9 @@ void cmd_load(void)
 
 void cmd_manual(void)
 {
-  SetDataToEngine( "force" );
   SET (flags, MANUAL);
+  ExpectAnswerFromEngine( false );
+  SetDataToEngine( "force" );
 }
 
 void cmd_memory(void)
@@ -701,7 +702,10 @@ void cmd_setboard(void)
   SetDataToEngine(data);
 }
 
-void cmd_solve(void) { Solve (token[1]); }
+void cmd_solve(void)
+{
+  Solve (token[1]);
+}
 
 /* Set total time for move to be N seconds is "st N" */
 void cmd_st(void)

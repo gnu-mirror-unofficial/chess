@@ -115,15 +115,15 @@ proc run { } {
     test_case "Command: save" [list "I load ./Polgar-Karpov.epd" "O . . . . R . K ." "I depth 1" "I Kh1" "O . . . . R . . K" "O White (2)" "I save ./tmp.epd" "O White (2)" "I epdload ./tmp.epd" "O . . . . R . . K"]
     file delete -force ./tmp.epd
     test_case "Command: exit" [list "I exit" "O "]
-    # FIX test_case "Command: force" [list "I force" "O White (1)" "I e4" "O . . . . P . . ." "O Black (1)"]
-    # FIX test_case "Command: manual" [list "I manual" "O White (1)" "I e4" "O . . . . P . . ." "O Black (1)"]
+    test_case "Command: force" [list "I force" "O White (1)" "I e4" "O . . . . P . . ." "O Black (1)"]
+    test_case "Command: manual" [list "I manual" "O White (1)" "I e4" "O . . . . P . . ." "O Black (1)"]
     test_case "Command: go" [list "I go" "O Thinking..." "O Black (1)" "I go" "O Thinking..." "O White (2)"]
     # TODO Add more complex cases for go
     test_case "Command: graphic" [list "I graphic" "O Graphic mode is enabled." "O White (1)"]
     test_case "Command: nographic" [list "I nographic" "O Graphic mode is disabled." "O White (1)"]
     test_case "Command: hash" [list "I hash" "O Hashing is on." "O White (1)" "I hash off" "O Hashing is off." "O White (1)" "I hash" "O Hashing is off." "O White (1)" "I hash on" "O Hashing is on." "O White (1)"]
     test_case "Command: help" [list "I help" "O List of commands: (help COMMAND to get more help)" "O White (1)" "I help help" "O help" "O Produces a help blurb corresponding to this list of commands." "O White (1)"]
-    # FIX test_case "Command: hint" [list "I hint" "O Hint:" "O White (1)"]
+    # TODO FIX test_case "Command: hint" [list "I hint" "O Hint:" "O White (1)"]
     test_case "Command: ics" [list "I ics" "O " "O White (1)"]
     test_case "Command: pgnload" [list "I pgnload ./Polgar-Karpov.pgn" \
                                "O white" \
@@ -137,7 +137,7 @@ proc run { } {
                                "O . . . . R . K ." \
                                "O White (1)"]
     file delete -force ./tmp.pgn
-    # FIX test_case "Command: pgnsave" [list "I pgnload ./Polgar-Karpov.pgn" "O . . . . R . K ." "I depth 1" "I Kh1" "O . . . . R . . K" "O White (35)" "I pgnsave ./tmp.pgn" "O White (35)" "I pgnload ./tmp.pgn" "O . . . . R . . K"]
+    # TODO FIX test_case "Command: pgnsave" [list "I pgnload ./Polgar-Karpov.pgn" "O . . . . R . K ." "I depth 1" "I Kh1" "O . . . . R . . K" "O White (35)" "I pgnsave ./tmp.pgn" "O White (35)" "I pgnload ./tmp.pgn" "O . . . . R . . K"]
     file delete -force ./tmp.pgn
     test_case "Command: pgnreplay" [list "I pgnreplay ./Polgar-Karpov.pgn" \
                                "O white" \
@@ -249,7 +249,7 @@ proc run { } {
     test_case "Command: memory" [list "I memory" "O Current HashSize is 256 MB" "O White (1)" \
                                       "I memory 128" "O Current HashSize is 128 MB" "O White (1)"]
     test_case "Command: new" [list "I new" "O White (1)" "I depth 1" "I e4" "O White (2)" "I new" "O White (1)"]
-    # FIX test_case "Command: post & nopost" [list "I post" "O 1 +" "O White (1)" "I nopost" "O White (1)"]
+    # TODO FIX test_case "Command: post & nopost" [list "I post" "O 1 +" "O White (1)" "I nopost" "O White (1)"]
     test_case "Command: post & nopost" [list "I depth 1" "I post" "O White (1)" "I e4" "O White (2)" "I nopost" "O White (2)"]
     test_case "Command: null" [list "I null" "O Null-move heuristic is on." "O White (1)" "I null off" "O Null-move heuristic is off." "O White (1)" "I null" "O Null-move heuristic is off." "O White (1)" "I null on" "O Null-move heuristic is on." "O White (1)"]
     test_case "Command: otim" [list "I otim 1" "O White (1)"]
