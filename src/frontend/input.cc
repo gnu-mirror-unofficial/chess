@@ -71,9 +71,9 @@ void getline_readline(char * p)
 
   inp = readline(p);
   if (inp && *inp) {
-    add_history(userinputstr);
     strncpy(userinputstr, inp, MAXSTR-1);
     userinputstr[MAXSTR-1] = '\0';
+    add_history(userinputstr);
   } else {
     userinputstr[0] = '\0';
   }
