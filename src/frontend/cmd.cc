@@ -255,7 +255,8 @@ void cmd_hint(void)
 
 void cmd_ics(void)
 {
-  SetDataToEngine( "ics *" );
+  //SetDataToEngine( "ics *" );
+  SetDataToEngine( token[0] );
 }
 
 void cmd_level(void)
@@ -345,7 +346,7 @@ void cmd_memory(void)
     if ( sscanf( token[1], "%d", &memory ) == 1 ) {
       char data[MAXSTR]="";
       sprintf( data, "memory %d\nmemory", memory );
-      ExpectAnswerFromEngine( true );
+      //ExpectAnswerFromEngine( true );
       SetDataToEngine( data );
     }
 /* TODO Handle error */
@@ -607,12 +608,19 @@ void cmd_nographic(void)
 
 void cmd_ping(void)
 {
-  ExpectAnswerFromEngine( true );
-  SetDataToEngine( "ping *" );
+  /* TODO cf. 5.08 */
+  SetDataToEngine( token[0] );
+  /* If ping is received when we are on move, we are supposed to
+     reply only after moving.  In this version of GNU Chess, we
+     never read commands while we are on move, so we don't have to
+     worry about that here. */
+  printf("pong %s\n", token[1]);
+  fflush(stdout);
 }
 
 void cmd_post(void)
 {
+  /* TODO State makes no sense */
   SET (flags, POST);
   postFlag = 1;
   if ( hardFlag && postFlag )
@@ -624,9 +632,14 @@ void cmd_post(void)
 
 void cmd_protover(void)
 {
+  SetDataToEngine( token[0] );
+  return;
   if (flags & XBOARD) {
     /* Note: change this if "draw" command is added, etc. */
-    SetDataToEngine( "protover *" );
+    printf("feature setboard=1 analyze=1 ping=1 draw=0 sigint=0\
+ variants=\"normal\" myname=\"%s %s\" done=1\n",
+      PROGRAM, VERSION);
+    fflush(stdout);
   }
 }
 

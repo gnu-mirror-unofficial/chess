@@ -155,8 +155,14 @@ void *input_func(void *arg __attribute__((unused)) )
       sprintf(prompt,"%s (%d) : ", 
 	      RealSide ? "Black" : "White", 
 	      (RealGameCnt+1)/2 + 1 );
+//printf("No xboard\n");
+    } else {
+      sprintf(prompt,"");
+//printf("xboard\n");
     }
+//printf("Wait for input (%s)\n", prompt);
     get_line(prompt);
+//printf("Input received (%s)\n", prompt);
     SendToFrontend( userinputstr );
     SendToFrontend( "\n" );
       pthread_mutex_lock( &input_mutex );
