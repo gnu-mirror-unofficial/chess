@@ -662,12 +662,6 @@ void SetDataToEngine( const char data[] );
 void ExpectAnswerFromEngine( int );
 
 /*
- * If the prompt must be displayed on the standard output, according to
- * the current state, it is displayed.
- */
-void ShowPrompt( void );
-
-/*
  * Extracts a command from the user input buffer.
  */
 void NextUserCmd( void );

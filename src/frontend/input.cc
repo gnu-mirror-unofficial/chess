@@ -59,6 +59,10 @@ volatile int input_status = INPUT_NONE;
   
 char userinputstr[MAXSTR];
 
+int wait_for_input = 1;
+pthread_cond_t      input_cond  = PTHREAD_COND_INITIALIZER;
+pthread_mutex_t     input_mutex = PTHREAD_MUTEX_INITIALIZER;
+
 /*
  * The readline get_line(), notice that even if we have readline,
  * it is not used if stdin is not a tty.
@@ -104,12 +108,6 @@ int SendToFrontend( char msg[] )
     int msg_size = strlen( msg );
     int msg_count=0;
 
-    /* The trailing '\n' is necessary. Otherwise, Polyglot will not realise of
-       the new message. TODO: This should be improved. */
-    //msg[msg_size] = '\n';
-    //msg[msg_size+1] = '\0';
-
-    //msg_count = write( pipefd_i2f[1], msg, msg_size+1 );
     msg_count = write( pipefd_i2f[1], msg, msg_size );
 
     if (msg_count == -1)
@@ -117,7 +115,6 @@ int SendToFrontend( char msg[] )
     else
       outError = 0;
 
-    //if ( ( msg_count == msg_size+1 ) && ( outError == 0 ) ) {
     if ( ( msg_count == msg_size ) && ( outError == 0 ) ) {
         return 1;
     } else {
@@ -127,17 +124,12 @@ int SendToFrontend( char msg[] )
     }
 }
 
-
-int wait_for_input = 1;
-pthread_cond_t      input_cond  = PTHREAD_COND_INITIALIZER;
-pthread_mutex_t     input_mutex = PTHREAD_MUTEX_INITIALIZER;
-
 void input_wakeup( void )
 {
   pthread_mutex_lock( &input_mutex );
   wait_for_input = 1;
-    pthread_cond_signal( &input_cond );
-    pthread_mutex_unlock( &input_mutex );
+  pthread_cond_signal( &input_cond );
+  pthread_mutex_unlock( &input_mutex );
 }
 
 void *input_func(void *arg __attribute__((unused)) )
@@ -155,19 +147,15 @@ void *input_func(void *arg __attribute__((unused)) )
       sprintf(prompt,"%s (%d) : ", 
 	      RealSide ? "Black" : "White", 
 	      (RealGameCnt+1)/2 + 1 );
-//printf("No xboard\n");
     } else {
       sprintf(prompt,"");
-//printf("xboard\n");
     }
-//printf("Wait for input (%s)\n", prompt);
     get_line(prompt);
-//printf("Input received (%s)\n", prompt);
     SendToFrontend( userinputstr );
     SendToFrontend( "\n" );
-      pthread_mutex_lock( &input_mutex );
-      wait_for_input = 0;
-      pthread_mutex_unlock( &input_mutex );
+    pthread_mutex_lock( &input_mutex );
+    wait_for_input = 0;
+    pthread_mutex_unlock( &input_mutex );
     /* TODO Improve this test */
     if ( strncmp(userinputstr,"quit",4) == 0 ) {
         break;

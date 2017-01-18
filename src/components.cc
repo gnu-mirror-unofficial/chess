@@ -171,5 +171,6 @@ void TerminateAdapterEngine()
 
 void TerminateInput()
 {
+  pthread_cancel( input_thread );
   pthread_join( input_thread, NULL );
 }
