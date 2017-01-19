@@ -625,8 +625,10 @@ void cmd_post(void)
   postFlag = 1;
   if ( hardFlag && postFlag )
     ExpectAnswerFromEngine( true );
-  //ExpectAnswerFromEngine( true );
-  ExpectAnswerFromEngine( false );
+  if ( flags & XBOARD )
+    ExpectAnswerFromEngine( true );
+  else
+    ExpectAnswerFromEngine( false );
   SetDataToEngine( token[0] );
 }
 
