@@ -1,6 +1,6 @@
 /* GNU Chess 6 - components.h - Pipes shared across modules
 
-   Copyright (c) 2001-2015 Free Software Foundation, Inc.
+   Copyright (c) 2001-2017 Free Software Foundation, Inc.
 
    GNU Chess is based on the two research programs
    Cobalt by Chua Kong-Sian and Gazebo by Stuart Cracraft.
@@ -37,12 +37,6 @@ extern int pipefd_a2f[2];
 
 extern int pipefd_a2e[2];
 extern int pipefd_e2a[2];
-
-/* Adapter thread */
-extern pthread_t adapter_thread;
-
-/* Engine thread */
-extern pthread_t engine_thread;
 
 /*
  * Entry point for the adapter thread
