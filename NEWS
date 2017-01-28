@@ -6,6 +6,10 @@ NEWS of GNU Chess
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
+Version 6.2.5-rc1 (January 2017)
+
+- Command history based on readline.
+
 Version 6.2.4 (October 2016)
 
 - Print error for invalid move.

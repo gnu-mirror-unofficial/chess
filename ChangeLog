@@ -1,3 +1,8 @@
+2017-01-29  Antonio Ceballos  <aceballos@gmail.com>
+
+	* TODO: remove readline task.
+	* NEWS: readline support.
+
 2017-01-21  Antonio Ceballos  <aceballos@gmail.com>
 
 	* src/components.h: clean up code.

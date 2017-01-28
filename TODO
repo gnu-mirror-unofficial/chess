@@ -12,7 +12,7 @@ Top priority:
 
 * When working in ICS, first game will fail to work post.
 
-* Consider using readline: replace calls to read() in frontend/engine.cc by calls to get_line(), the latter defined as in v5.08. Useful examples in the package examples directory. Those based on rl_callback_read_char can be interesting. See also http://www.gnu.org/software/autoconf-archive/ax_lib_readline.html.
+* Add command auto-completion.
 
 * Clean and refurbish frontend new code: components.cc, engine.cc, etc.
 
