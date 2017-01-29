@@ -43,7 +43,6 @@
 #include "common.h"
 #include "components.h"
 
-#undef HAVE_LIBREADLINE
 #ifdef HAVE_LIBREADLINE
 # ifdef HAVE_READLINE_READLINE_H
 #  include <readline/readline.h>
