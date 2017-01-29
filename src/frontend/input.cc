@@ -43,6 +43,7 @@
 #include "common.h"
 #include "components.h"
 
+#undef HAVE_LIBREADLINE
 #ifdef HAVE_LIBREADLINE
 # ifdef HAVE_READLINE_READLINE_H
 #  include <readline/readline.h>
@@ -152,7 +153,9 @@ void *input_func(void *arg __attribute__((unused)) )
     }
     get_line(prompt);
     SendToFrontend( userinputstr );
+#ifdef HAVE_LIBREADLINE
     SendToFrontend( "\n" );
+#endif
     pthread_mutex_lock( &input_mutex );
     wait_for_input = 0;
     pthread_mutex_unlock( &input_mutex );

@@ -1,5 +1,10 @@
 2017-01-29  Antonio Ceballos  <aceballos@gmail.com>
 
+	* src/frontend/input.cc: don't send '\n' if standard get line
+	instead of readline.
+
+2017-01-29  Antonio Ceballos  <aceballos@gmail.com>
+
 	* TODO: remove readline task.
 	* NEWS: readline support.
 
