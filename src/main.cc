@@ -412,8 +412,9 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   sigaction( SIGINT, &action, NULL );
 
   Initialize ();
-  InitFrontend();
   if ( ! (flags & UCI ) ) {
+    /* Initialize the frontend */
+    InitFrontend();
     /* Initialize the adapter, which in turn initializes the engine */
     InitAdapter();
   } else {

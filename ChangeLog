@@ -1,3 +1,7 @@
+2020-02-18  Antonio Ceballos  <aceballos@gmail.com>
+
+	* src/main.cc: initialize frontend only if not UCI mode.
+
 2017-07-26  Antonio Ceballos  <aceballos@gmail.com>
 
 	* configure.ac: version 6.2.5e.
