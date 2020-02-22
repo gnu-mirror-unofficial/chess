@@ -1,3 +1,8 @@
+2020-02-22  Antonio Ceballos  <aceballos@gmail.com>
+
+	* misc/svn-ignore/: files ignored by Subversion.
+	* 'svn propset svn:ignore' set
+
 2020-02-18  Antonio Ceballos  <aceballos@gmail.com>
 
 	* src/main.cc: initialize frontend only if not UCI mode.

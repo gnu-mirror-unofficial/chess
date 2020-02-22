@@ -1,0 +1,7 @@
+Makefile
+Makefile.in
+gnuchess.info
+mdate-sh
+stamp-vti
+texinfo.tex
+version.texi

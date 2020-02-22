@@ -1,0 +1,8 @@
+.deps
+Makefile
+Makefile.in
+GCint.h
+config.h
+configmake.h
+gnuchess
+stamp-h1
