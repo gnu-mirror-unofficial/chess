@@ -1,5 +1,10 @@
 2020-02-23  Antonio Ceballos  <aceballos@gmail.com>
 
+	* po/: updated translations: de, eo, fr, nl, pt_BR, sr.
+	* po/: new translation: it.
+
+2020-02-23  Antonio Ceballos  <aceballos@gmail.com>
+
 	* src/main.cc: avoid compilation warning by assigning
 	function return value to a variable.
 	* src/frontend/engine.cc: avoid compilation warning by assigning 
