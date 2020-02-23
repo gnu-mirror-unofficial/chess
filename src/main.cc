@@ -1,6 +1,6 @@
 /* GNU Chess 6 - main.cc - entry point
 
-   Copyright (c) 2001-2017 Free Software Foundation, Inc.
+   Copyright (c) 2001-2020 Free Software Foundation, Inc.
 
    GNU Chess is based on the two research programs
    Cobalt by Chua Kong-Sian and Gazebo by Stuart Cracraft.
@@ -218,7 +218,7 @@ extern char userinputbuf[];
 
 void EndProg( int sig __attribute__ ((unused)) )
 {
-    system( "stty sane" );
+    int r = system( "stty sane" );  // TODO Handle return value
     exit(0);
 }
 

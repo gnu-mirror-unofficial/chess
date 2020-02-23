@@ -1,8 +1,8 @@
-/* GNU Chess 5.0 - input.c - Input thread and related
-   Copyright (c) 2002 Free Software Foundation, Inc.
+/* input.c
 
-   GNU Chess is based on the two research programs 
-   Cobalt by Chua Kong-Sian and Gazebo by Stuart Cracraft.
+   GNU Chess frontend
+
+   Copyright (C) 2001-2020 Free Software Foundation, Inc.
 
    GNU Chess is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -98,7 +98,7 @@ void getline_standard(char *p)
     fputs(p, stdout);
     fflush(stdout);
   }
-  fgets(userinputstr, MAXSTR, stdin);
+  char *s = fgets(userinputstr, MAXSTR, stdin);  // TODO Handle return value
 }
 
 /*
@@ -150,8 +150,6 @@ void *input_func(void *arg __attribute__((unused)) )
       sprintf(prompt,"%s (%d) : ", 
 	      RealSide ? _("Black") : _("White"), 
 	      (RealGameCnt+1)/2 + 1 );
-    } else {
-      sprintf(prompt,"");
     }
     get_line(prompt);
     SendToFrontend( userinputstr );

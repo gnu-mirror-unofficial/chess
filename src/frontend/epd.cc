@@ -2,7 +2,7 @@
 
    GNU Chess frontend
 
-   Copyright (C) 2001-2011 Free Software Foundation, Inc.
+   Copyright (C) 2001-2020 Free Software Foundation, Inc.
 
    GNU Chess is based on the two research programs
    Cobalt by Chua Kong-Sian and Gazebo by Stuart Cracraft.
@@ -73,7 +73,13 @@ short ReadEPDFile (const char *file, short op)
 
 next_line:
    /*  Okay, we read in an EPD entry  */
-   fgets (line, MAXSTR-1, fp);
+   if (fgets (line, MAXSTR-1, fp) != line)
+   {
+       printf ("Error reading file %s\n", file);
+       fclose (fp);
+       fp = NULL;
+       return (false);
+   }
    strcpy( epd_line, line );
    if (!feof(fp))
    {
