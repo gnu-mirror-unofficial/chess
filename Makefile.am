@@ -33,7 +33,7 @@ logodir=$(pluginsdir)/logos
 logo_DATA = misc/gnuchess.png
 
 # Additional files to distribute.
-EXTRA_DIST = config.rpath m4/ChangeLog  TODO src/gnuchess.ini src/smallbook.bin src/gnuchessx src/gnuchessu doc/quotes.rb lib/gettext.h misc/gnuchess.eng misc/gnuchess.png
+EXTRA_DIST = config.rpath TODO src/gnuchess.ini src/smallbook.bin src/gnuchessx src/gnuchessu doc/quotes.rb lib/gettext.h misc/gnuchess.eng misc/gnuchess.png
 
 DISTCLEANFILES = *~ src/GCint.h
 pkgdatadir =$(datadir)/gnuchess

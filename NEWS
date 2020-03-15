@@ -1,10 +1,16 @@
 NEWS of GNU Chess
 
-  Copyright (C) 2001-2017 Free Software Foundation, Inc.
+  Copyright (C) 2001-2020 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
+
+Version 6.2.6-pre1 (March 2020)
+
+- Minor fixes on compilation warnings
+- Bug fixes.
+- New and updated translations.
 
 Version 6.2.5 (July 2017)
 
