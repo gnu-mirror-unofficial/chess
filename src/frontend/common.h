@@ -430,7 +430,7 @@ void FilterIllegalMoves (short);
 void MakeMove (int, int *);
 void UnmakeMove (int, int *);
 void SANMove (int, int);
-leaf *ValidateMove (char *);
+leaf *ValidateMove (char *, char *clearMove=0);
 leaf *IsInMoveList (int, int, int, char);
 char *AlgbrMove (int);
 

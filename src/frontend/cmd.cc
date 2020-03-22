@@ -1283,14 +1283,15 @@ void parse_input(void)
    }
 
    /* OK, no known command, this should be a move */
-   ptr = ValidateMove (token[0]);
+   char clearMove[MAXSTR]="";
+   ptr = ValidateMove (token[0], clearMove);
    if (ptr != NULL) {
      /* Since the user entered a move:
       * 1. The move must be sent to the engine.
       * 2. A reply is expected from the engine.
       */
      SetUserInputValidMove( 1 );
-     SetDataToEngine( token[0] );
+     SetDataToEngine( clearMove );
      pgnloaded = 0;
      ExpectAnswerFromEngine( true );
      SANMove (ptr->move, 1);

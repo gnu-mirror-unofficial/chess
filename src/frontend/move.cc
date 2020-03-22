@@ -526,7 +526,7 @@ inline int piece_id(const char c)
 
 
 
-leaf * ValidateMove (char *s)
+leaf * ValidateMove (char *s, char *clearMove)
 /*************************************************************************
  *
  *  This routine takes a string and check to see if it is a legal move.
@@ -566,11 +566,13 @@ leaf * ValidateMove (char *s)
    /* Flush castles that check */
    if (mvstr[strlen(mvstr)-1] == '+' || mvstr[strlen(mvstr)-1] == '#' ||
        mvstr[strlen(mvstr)-1] == '=') mvstr[strlen(mvstr)-1] = '\000';
+   if (clearMove) strcpy(clearMove, mvstr);
 
    /* Check for castling */
    if (strcmp (mvstr, "O-O") == 0 || strcmp (mvstr, "o-o") == 0 ||
        strcmp (mvstr, "0-0") == 0)
    {
+      if (clearMove) strcpy(clearMove, "O-O");
       if (side == white)
       {
          f = 4; t = 6;
@@ -585,6 +587,7 @@ leaf * ValidateMove (char *s)
    if (strcmp (mvstr, "O-O-O") == 0 || strcmp (mvstr, "o-o-o") == 0 ||
        strcmp (mvstr, "0-0-0") == 0)
    {
+      if (clearMove) strcpy(clearMove, "O-O-O");
       if (side == white)
       {
          f = 4; t = 2;
