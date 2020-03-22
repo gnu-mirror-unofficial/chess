@@ -2,7 +2,7 @@
 
    GNU Chess frontend
 
-   Copyright (C) 2001-2017 Free Software Foundation, Inc.
+   Copyright (C) 2001-2020 Free Software Foundation, Inc.
 
    GNU Chess is based on the two research programs
    Cobalt by Chua Kong-Sian and Gazebo by Stuart Cracraft.
@@ -145,21 +145,21 @@ void cmd_book(void)
     }
   } else if (tokeneq (token[1], "on") || tokeneq(token[1], "prefer")) {
     strcpy( data, "book on" );
-    printf(_("Book is now on\n"));
+    printf(_("Book is now on.\n"));
   } else if (tokeneq (token[1], "off")) {
     strcpy( data, "book off" );
-    printf(_("Book is now off\n"));
+    printf(_("Book is now off.\n"));
   } else if (tokeneq (token[1], "best")) {
     strcpy( data, "book best" );
-    printf(_("Book is now best\n"));
+    printf(_("Book is now best.\n"));
   } else if (tokeneq (token[1], "worst")) {
     strcpy( data, "book worst" );
-    printf(_("Book is now worst\n"));
+    printf(_("Book is now worst.\n"));
   } else if (tokeneq (token[1], "random")) {
     strcpy( data, "book random" );
-    printf(_("Book is now random\n"));
+    printf(_("Book is now random.\n"));
   } else {
-    printf( _("Incorrect book option: '%s'\n"), token[1] );
+    printf( _("Incorrect book option: '%s'.\n"), token[1] );
     return;
   }
   SetDataToEngine( data );
@@ -1127,7 +1127,7 @@ static const char * const helpstr[] = {
    "coords",
    gettext_noop(" Displays the chessboard rank and file in both graphic and classical views."),
    "nocoords",
-   gettext_noop(" Does not display the chessboard rank nor file in either mode (graphic nor classical)"),
+   gettext_noop(" Does not display the chessboard rank nor file in either mode (graphic nor classical)."),
    NULL,
    NULL
 };
@@ -1153,7 +1153,7 @@ void cmd_help (void)
            return;
         }
       }
-      printf(_("Help for command %s not found\n\n"), token[1]);
+      printf(_("Help for command '%s' not found.\n\n"), token[1]);
    }
    printf(_("List of commands: (help COMMAND to get more help)\n"));
    for (p=helpstr, count=0; *p; p++) {
@@ -1283,15 +1283,15 @@ void parse_input(void)
    }
 
    /* OK, no known command, this should be a move */
-   char clearMove[MAXSTR]="";
-   ptr = ValidateMove (token[0], clearMove);
+   char cleanMove[MAXSTR]="";
+   ptr = ValidateMove (token[0], cleanMove);
    if (ptr != NULL) {
      /* Since the user entered a move:
       * 1. The move must be sent to the engine.
       * 2. A reply is expected from the engine.
       */
      SetUserInputValidMove( 1 );
-     SetDataToEngine( clearMove );
+     SetDataToEngine( cleanMove );
      pgnloaded = 0;
      ExpectAnswerFromEngine( true );
      SANMove (ptr->move, 1);

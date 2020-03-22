@@ -2,7 +2,7 @@
 
    GNU Chess frontend
 
-   Copyright (C) 2001-2011 Free Software Foundation, Inc.
+   Copyright (C) 2001-2020 Free Software Foundation, Inc.
 
    GNU Chess is based on the two research programs
    Cobalt by Chua Kong-Sian and Gazebo by Stuart Cracraft.
@@ -526,7 +526,7 @@ inline int piece_id(const char c)
 
 
 
-leaf * ValidateMove (char *s, char *clearMove)
+leaf * ValidateMove (char *s, char *cleanMove)
 /*************************************************************************
  *
  *  This routine takes a string and check to see if it is a legal move.
@@ -566,13 +566,13 @@ leaf * ValidateMove (char *s, char *clearMove)
    /* Flush castles that check */
    if (mvstr[strlen(mvstr)-1] == '+' || mvstr[strlen(mvstr)-1] == '#' ||
        mvstr[strlen(mvstr)-1] == '=') mvstr[strlen(mvstr)-1] = '\000';
-   if (clearMove) strcpy(clearMove, mvstr);
+   if (cleanMove) strcpy(cleanMove, mvstr);
 
    /* Check for castling */
    if (strcmp (mvstr, "O-O") == 0 || strcmp (mvstr, "o-o") == 0 ||
        strcmp (mvstr, "0-0") == 0)
    {
-      if (clearMove) strcpy(clearMove, "O-O");
+      if (cleanMove) strcpy(cleanMove, "O-O");
       if (side == white)
       {
          f = 4; t = 6;
@@ -587,7 +587,7 @@ leaf * ValidateMove (char *s, char *clearMove)
    if (strcmp (mvstr, "O-O-O") == 0 || strcmp (mvstr, "o-o-o") == 0 ||
        strcmp (mvstr, "0-0-0") == 0)
    {
-      if (clearMove) strcpy(clearMove, "O-O-O");
+      if (cleanMove) strcpy(cleanMove, "O-O-O");
       if (side == white)
       {
          f = 4; t = 2;

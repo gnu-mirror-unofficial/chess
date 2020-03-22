@@ -1,4 +1,4 @@
 @set UPDATED 14 March 2020
 @set UPDATED-MONTH March 2020
-@set EDITION 6.2.6-pre1
-@set VERSION 6.2.6-pre1
+@set EDITION 6.2.6-pre2
+@set VERSION 6.2.6-pre2

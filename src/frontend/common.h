@@ -2,7 +2,7 @@
 
    GNU Chess frontend
 
-   Copyright (C) 2001-2017 Free Software Foundation, Inc.
+   Copyright (C) 2001-2020 Free Software Foundation, Inc.
 
    GNU Chess is based on the two research programs
    Cobalt by Chua Kong-Sian and Gazebo by Stuart Cracraft.
@@ -430,7 +430,7 @@ void FilterIllegalMoves (short);
 void MakeMove (int, int *);
 void UnmakeMove (int, int *);
 void SANMove (int, int);
-leaf *ValidateMove (char *, char *clearMove=0);
+leaf *ValidateMove (char *, char *cleanMove=0);
 leaf *IsInMoveList (int, int, int, char);
 char *AlgbrMove (int);
 
