@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: gnuchess 6.2.6-pre1\n"
+"Project-Id-Version: gnuchess 6.2.6-pre2\n"
 "Report-Msgid-Bugs-To: bug-gnu-chess@gnu.org\n"
-"POT-Creation-Date: 2020-03-15 08:27+0100\n"
+"POT-Creation-Date: 2020-03-22 13:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,32 +66,32 @@ msgstr ""
 
 #: src/frontend/cmd.cc:148
 #, c-format
-msgid "Book is now on\n"
+msgid "Book is now on.\n"
 msgstr ""
 
 #: src/frontend/cmd.cc:151
 #, c-format
-msgid "Book is now off\n"
+msgid "Book is now off.\n"
 msgstr ""
 
 #: src/frontend/cmd.cc:154
 #, c-format
-msgid "Book is now best\n"
+msgid "Book is now best.\n"
 msgstr ""
 
 #: src/frontend/cmd.cc:157
 #, c-format
-msgid "Book is now worst\n"
+msgid "Book is now worst.\n"
 msgstr ""
 
 #: src/frontend/cmd.cc:160
 #, c-format
-msgid "Book is now random\n"
+msgid "Book is now random.\n"
 msgstr ""
 
 #: src/frontend/cmd.cc:162
 #, c-format
-msgid "Incorrect book option: '%s'\n"
+msgid "Incorrect book option: '%s'.\n"
 msgstr ""
 
 #: src/frontend/cmd.cc:175
@@ -137,7 +137,7 @@ msgstr ""
 msgid "reverse - list by GNU worst result first\n"
 msgstr ""
 
-#: src/frontend/cmd.cc:305 src/frontend/cmd.cc:1340
+#: src/frontend/cmd.cc:305 src/frontend/cmd.cc:1341
 #, c-format
 msgid "Board is wrong!\n"
 msgstr ""
@@ -334,7 +334,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: src/frontend/cmd.cc:866 src/frontend/cmd.cc:1319
+#: src/frontend/cmd.cc:866 src/frontend/cmd.cc:1320
 #, c-format
 msgid "Invalid move: %s\n"
 msgstr ""
@@ -680,13 +680,13 @@ msgstr ""
 #: src/frontend/cmd.cc:1130
 msgid ""
 " Does not display the chessboard rank nor file in either mode (graphic nor "
-"classical)"
+"classical)."
 msgstr ""
 
 #: src/frontend/cmd.cc:1156
 #, c-format
 msgid ""
-"Help for command %s not found\n"
+"Help for command '%s' not found.\n"
 "\n"
 msgstr ""
 
