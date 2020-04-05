@@ -6,6 +6,10 @@ NEWS of GNU Chess
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
+Version 6.2.6-pre3 (April 2020)
+
+- Fix buffer overflow on load EPD file.
+
 Version 6.2.6-pre2 (March 2020)
 
 - Fix move validation when cleaning up moves, e.g. accepting '0-0'
