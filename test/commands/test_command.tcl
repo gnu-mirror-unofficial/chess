@@ -231,8 +231,8 @@ proc run { } {
                                "O . . . . R . K ." \
                                "O White (33)"]
     test_case "Command: level" [list "I level 40 1 2" \
-                               "O Time Control: 40 moves in 60.00 secs" \
-                               "O Fischer increment of 2 seconds" \
+                               "O Time Control: 40 moves in 60.00 secs." \
+                               "O Fischer increment of 2 seconds." \
                                "O White (1)"]
     test_case "Command: list & name & result" [list "I list ?" \
                                "O name    - list known players alphabetically" \
