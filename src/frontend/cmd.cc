@@ -313,13 +313,20 @@ void cmd_load(void)
       if ( fgets( epdline, MAXSTR, epdfile ) == NULL ) {
         printf(_("Error reading file '%s'.\n"), token[1] );
       } else {
-        strcpy( data, "setboard " );
+        const char setboardCmd[] = "setboard ";
+        unsigned int setboardLen = strlen(setboardCmd);
+        strcpy( data, setboardCmd );
         int i=0;
         while ( epdline[i] != '\n' ) {
-          data[i+9] = epdline[i];
-          ++i;
+          if (i + setboardLen < MAXSTR - 1) {
+              data[i+setboardLen] = epdline[i];
+              ++i;
+          } else {
+              printf(_("Error reading contents of file '%s'.\n"), token[1] );
+              break;
+          }
         }
-        data[i+9] = '\0';
+        data[i+setboardLen] = '\0';
         SetDataToEngine( data );
         SetAutoGo( true );
       }
