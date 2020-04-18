@@ -12,7 +12,7 @@ Version 6.2.6 (April 2020)
 - Fix move validation when cleaning up moves, e.g. accepting '0-0'
 for O-O'.
 - More consistent use of period in translatable texts.
-- Minor fixes on compilation warnings
+- Minor fixes on compilation warnings.
 - New and updated translations.
 
 Version 6.2.5 (July 2017)
