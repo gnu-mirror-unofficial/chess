@@ -92,6 +92,27 @@ static int tokeneq(const char *s, const char *t)
   return (!*s || isspace(*s)) && (!*t || isspace(*t));
 }
 
+/*
+ * Reads a PGN file and returns the equivalent EPD content
+ *
+ * The conversion relies on a temporary file in EPD format,
+ * which is removed afterwards.
+ */
+static char *load_pgn_as_epd( const char *pgn_filename, char *epdline, int showheading )
+{
+  FILE *epdfile=NULL;
+  char tmp_epd[]=".tmp.epd";
+
+  PGNReadFromFile (pgn_filename, showheading);
+  SaveEPD( tmp_epd );
+  epdfile = fopen( tmp_epd, "r" );
+  char *s = fgets( epdline, MAXSTR, epdfile );
+  fclose( epdfile );
+  remove( tmp_epd );
+
+  return s;
+}
+
 void cmd_accepted(void)
 {
   SetDataToEngine( token[0] );
@@ -437,20 +458,25 @@ void cmd_otim(void)
    SetDataToEngine( token[0] );
 }
 
+/*
+ * Load a file containing a game in PGN format.
+ *
+ * The file contents will be passed on to the adapter
+ * in EPD notation (the adapter expectes FEN actually,
+ * but EPD and FEN are similar (possible issue here?),
+ * hence a PGN -> EPD conversion in done first.
+ */
 void cmd_pgnload(void)
 {
-  char tmp_epd[]=".tmp.epd";
   char data[MAXSTR]="";
-  FILE *epdfile=NULL;
   char epdline[MAXSTR]="";
 
-  PGNReadFromFile (token[1],0);
-  SaveEPD( tmp_epd );
-  epdfile = fopen( tmp_epd, "r" );
-  if ( fgets( epdline, MAXSTR, epdfile ) == NULL ) {
+  char *s = load_pgn_as_epd( token[1], epdline, 0 );
+  if ( s == NULL ) {
     printf( _("Incorrect epd file.\n") );
     return;
   }
+
   strcpy( data, "setboard " );
   int i=0;
   while ( epdline[i] != '\n' ) {
@@ -463,18 +489,14 @@ void cmd_pgnload(void)
   pgnloaded = 0;
 }
 
+/* See comment above in cmd_pgnload about PGN -> EPD conversion. */
 void cmd_pgnreplay(void)
 {
-  char tmp_epd[]=".tmp.epd";
   char data[MAXSTR]="";
-  FILE *epdfile=NULL;
   char epdline[MAXSTR]="";
 
-  PGNReadFromFile (token[1],1);
-
-  SaveEPD( tmp_epd );
-  epdfile = fopen( tmp_epd, "r" );
-  if ( fgets( epdline, MAXSTR, epdfile ) == NULL ) {
+  char *s = load_pgn_as_epd( token[1], epdline, 1 );
+  if ( s == NULL ) {
     printf( _("Incorrect epd file.\n") );
     return;
   }
