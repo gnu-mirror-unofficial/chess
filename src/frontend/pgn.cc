@@ -206,7 +206,7 @@ void PGNReadFromFile (const char *file, int showheading)
    fp = fopen (file, "r");
    if (fp == NULL)
    {
-      printf ("Cannot open file %s\n", file);
+      printf(_("Cannot open file %s\n"), file);
       return;
    }
    yyin = fp;
