@@ -7,6 +7,38 @@
 
 extern char mock_SetDataToEngine_data[];
 
+TEST_CASE("load: Loads a position in EPD format from disk into memory.", "[cmd_load]") {
+    char test_epd_filename[] = "../data/Polgar-Karpov.epd";
+    strcpy(inputstr, "load ");
+    strcat(inputstr, test_epd_filename);
+    split_input();
+
+    const char epd[] = "2r2nk1/4qpp1/4p3/p2nN1P1/PpNP4/1PrR1Q2/5P2/4R1K1 w - - bm 1; id 1;";
+    char expected_data_to_engine[BUF_SIZE]="setboard ";
+    strcat(expected_data_to_engine, epd);
+
+    SECTION("Data sent to the engine: 'setboard <epd game>'") {
+        cmd_load();
+        REQUIRE( strcmp(mock_SetDataToEngine_data, expected_data_to_engine) == 0 );
+    }
+}
+
+TEST_CASE("epdload: Loads a position in EPD format from disk into memory.", "[cmd_epdload]") {
+    char test_epd_filename[] = "../data/Polgar-Karpov.epd";
+    strcpy(inputstr, "epdload ");
+    strcat(inputstr, test_epd_filename);
+    split_input();
+
+    const char epd[] = "2r2nk1/4qpp1/4p3/p2nN1P1/PpNP4/1PrR1Q2/5P2/4R1K1 w - - bm 1; id 1;";
+    char expected_data_to_engine[BUF_SIZE]="setboard ";
+    strcat(expected_data_to_engine, epd);
+
+    SECTION("Data sent to the engine: 'setboard <epd game>'") {
+        cmd_load();
+        REQUIRE( strcmp(mock_SetDataToEngine_data, expected_data_to_engine) == 0 );
+    }
+}
+
 TEST_CASE("User input can be tokenized", "[split_input]") {
 
     /*

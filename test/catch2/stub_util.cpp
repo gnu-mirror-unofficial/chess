@@ -1,3 +1,3 @@
 // frontend/util.cc
 
-short ValidateBoard(void) { return 0; }
+short ValidateBoard(void) { return 1; }
