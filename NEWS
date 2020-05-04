@@ -6,6 +6,11 @@ NEWS of GNU Chess
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
+Version 6.2.7-pre1 (May 2020)
+
+- Minor fixes in the build system.
+- Test harness based on Catch2.
+
 Version 6.2.6 (April 2020)
 
 - Fix buffer overflow on load EPD file.

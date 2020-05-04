@@ -1,3 +1,26 @@
+2020-05-04  David Seifert <soap@gentoo.org>  (tiny change)
+
+	* Pre-release 6.2.7-pre1
+	* Patch for hardcoded ar
+
+2020-05-02  Antonio Ceballos  <aceballos@gmail.com>
+
+	* Basic test for command 'pgnload'
+	* Basic test for commands 'load' and 'epdload'
+
+2020-04-26  Antonio Ceballos  <aceballos@gmail.com>
+
+	* Test harness based on Catch2
+	* Add translatable string
+
+2020-04-21  Jens.Schleusener <Jens.Schleusener@fossies.org>  (tiny change)
+
+	* Fix 'unsinged' typo for 'unsigned'
+
+2020-04-19  Antonio Ceballos  <aceballos@gmail.com>
+
+	* Remove temporary EPD file after loading PGN file
+
 2020-04-18  Antonio Ceballos  <aceballos@gmail.com>
 
 	* ChangeLog: Release 6.2.6
