@@ -166,9 +166,12 @@ void PGNSaveToFile (const char *file, const char *resultstr)
    for (i = 0; i <= GameCnt; i++)
    {
       if (! (i % 2)) {
-        sprintf (s, "%s%d. ", s, i/2 + 1);
+          char num[6];
+          sprintf(num, "%d. ", i/2 + 1);
+          strcat(s, num);
       }
-      sprintf (s, "%s%s ", s, Game[i].SANmv);
+      strcat(s, Game[i].SANmv);
+      strcat(s, " ");
       if (strlen (s) > 80)
       {
          p = s + 79;
