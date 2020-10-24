@@ -372,7 +372,7 @@ static int UserInputIsAValidMove(void)
 static int GetNextLine( char buf[], char line[] )
 {
   char bufaux[BUF_SIZE]="";
-  int i=0;
+  unsigned int i=0;
   int found=0;
 
   for ( i=0; i<strlen( buf ); ++i ) {
@@ -400,7 +400,7 @@ static int GetNextLine( char buf[], char line[] )
  */
 static int GetNextLineNoRemove( char buf[], char line[] )
 {
-  int i=0;
+  unsigned int i=0;
   int found=0;
 
   for ( i=0; i<strlen( buf ); ++i ) {
@@ -557,6 +557,9 @@ void ForwardEngineOutputToUser( void )
     /* Write data to output */
     assert( nread < BUF_SIZE-1 );
     engineinputaux[nread] = '\0';
-    ssize_t r = write( STDOUT_FILENO, engineinputaux, nread );  // TODO Handle return value
+    ssize_t r = write( STDOUT_FILENO, engineinputaux, nread );
+    if ( r == -1 ) {
+      printf( "Error sending message to engine.\n" );
+    }
   }
 }

@@ -218,8 +218,8 @@ extern char userinputbuf[];
 
 void EndProg( int sig __attribute__ ((unused)) )
 {
-    int r = system( "stty sane" );  // TODO Handle return value
-    exit(0);
+    int r = system( "stty sane" );
+    exit(r);
 }
 
 int main (int argc, char *argv[])

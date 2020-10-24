@@ -45,7 +45,6 @@ void Solve (char *file)
    int total, correct, found;
    char *p;
    char myMove[100]="";
-   int elo;
 
    total = correct = 0;
    SET (flags, SOLVE);

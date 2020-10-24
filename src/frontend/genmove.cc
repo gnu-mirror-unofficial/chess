@@ -307,18 +307,15 @@ void GenNonCaptures (short ply)
  ****************************************************************************/
 {
    int side;
-   int piece, sq, t, ep;
-   BitBoard b, c, d, friends, notfriends, blocker, notblocker;
+   int piece, sq, t;
+   BitBoard b, c, d, blocker, notblocker;
    BitBoard *a;
 
    side = board.side;
    a = board.b[side];
-   friends = board.friends[side];
-   notfriends = ~friends;
    blocker = board.blocker;
    notblocker = ~blocker;
    node = TreePtr[ply + 1];
-   ep = board.ep;
 
    /* Knight & King */
    for (piece = knight; piece <= king; piece += 4)
@@ -452,13 +449,11 @@ void GenCaptures (short ply)
 {
    int side;
    int piece, sq, t, ep;
-   BitBoard b, c, friends, notfriends, enemy, blocker;
+   BitBoard b, c, enemy, blocker;
    BitBoard *a;
 
    side = board.side;
    a = board.b[side];
-   friends = board.friends[side];
-   notfriends = ~friends;
    enemy = board.friends[1^side];
    blocker = board.blocker;
    node = TreePtr[ply + 1];

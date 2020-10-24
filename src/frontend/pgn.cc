@@ -353,7 +353,7 @@ static const char *const trusted_players[] = {
 int IsTrustedPlayer(const char *name)
 /* Return 1 if name in trusted_players list, else 0 */
 {
-	int i;
+	unsigned int i;
 	for (i = 0; i < (sizeof(trusted_players) / sizeof(*trusted_players));
 	    	i++) {
 		if (strstr(name, trusted_players[i]) != NULL)

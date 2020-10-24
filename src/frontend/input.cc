@@ -98,7 +98,7 @@ void getline_standard(char *p)
     fputs(p, stdout);
     fflush(stdout);
   }
-  char *s = fgets(userinputstr, MAXSTR, stdin);  // TODO Handle return value
+  fgets(userinputstr, MAXSTR, stdin);  // TODO Handle return value
 }
 
 /*

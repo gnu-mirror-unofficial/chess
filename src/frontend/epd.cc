@@ -84,7 +84,7 @@ next_line:
    if (!feof(fp))
    {
       /* Skip comment lines */
-      int i=0;
+      unsigned int i=0;
       for (i = 0; i < strlen( line ); ++i) {
          if ( isblank( line[i] ) ) {
             continue;
