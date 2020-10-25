@@ -1,3 +1,7 @@
+2020-10-25  Antonio Ceballos  <aceballos@gmail.com>
+
+	* Modify command 'pgnsave file': if file exists, do not save
+
 2020-10-24  Antonio Ceballos  <aceballos@gmail.com>
 
 	* Remove compilation warnings: unused variables, signed-unsigned

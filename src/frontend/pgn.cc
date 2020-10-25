@@ -48,9 +48,8 @@ extern int yylex (void);
 void PGNSaveToFile (const char *file, const char *resultstr)
 /****************************************************************************
  *
- *  To save a game into PGN format to a file.  If the file does not exist,
- *  it will create it.  If the file exists, the user will be asked for
- *  permission to overwrite the existing one.
+ *  To save a game into PGN format to a file, if the file does not exist.
+ *  If the file exists, it will not be written and the user will be informed.
  *
  ****************************************************************************/
 {
@@ -59,47 +58,20 @@ void PGNSaveToFile (const char *file, const char *resultstr)
    int len;
    char *p;
    int i;
-   char answer = '\0'; /* Default: invalid */
    time_t secs;
    struct tm *timestruct;
-   /* TRANSLATORS: "y" for "yes" */
-   const char *yes = _("y");
-   /* TRANSLATORS: "n" for "no" */
-   const char *no = _("n");
 
    fp = fopen(file, "r");
    if (fp) {
      fclose(fp);
-     printf(_("File with name %s already exists.\n"), file);
-     do {
-       /* TRANSLATORS: translate "y/n" (yes/no) like you translated "y" and "n" above. */
-       printf(_("Overwrite file? [y/n]: "));
-       answer = getchar();
-       
-       if ( answer == '\n' ) {
-         printf(_("Invalid answer! "));         
-         continue;
-       }
-       
-       while( getchar() != '\n' );
-       
-       if (tolower(answer) == *no) {
-         printf(_("File not saved.\n"));
-         return;
-       }
-       else if (tolower(answer) == *yes) {
-         printf(_("File %s is overwritten.\n"), file);
-       }
-       else {
-         printf(_("Invalid answer! "));
-       } 
-     } while (tolower(answer) != *no && tolower(answer) != *yes);
+     printf(_("File '%s' already exists. Please delete it first, or choose a different file name.\n"), file);
+     return;
    }
    
    fp = fopen (file, "w");
    if (fp == NULL)
    {
-      printf ("Cannot write to file %s\n", file);
+      printf(_("Cannot write to file %s\n"), file);
       return;
    }
 
