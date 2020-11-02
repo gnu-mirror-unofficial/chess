@@ -1,3 +1,7 @@
+2020-11-02  Antonio Ceballos  <aceballos@gmail.com>
+
+	* Basic test for command 'pgnsave'
+
 2020-10-25  Antonio Ceballos  <aceballos@gmail.com>
 
 	* Modify command 'pgnsave file': if file exists, do not save
