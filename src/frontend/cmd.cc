@@ -684,7 +684,7 @@ void cmd_quit(void) { SET (flags, QUIT); }
 void cmd_random(void)
 {
   printf( _("Command 'random' is currently not supported.\n") );
-  SetDataToEngine( token[0] );
+  //SetDataToEngine( token[0] );
 }
 
 void cmd_rating(void)
@@ -839,10 +839,11 @@ Play the game of chess.\n\n"), stdout );
  in coordinate algebraic notation.\n\
 \n"), stdout );
       fputs( _("\
- The file 'gnuchess.ini' allows setting config options. See\n\
- 'info gnuchess' for details. The file will be looked up in the current\n\
- directory or, if not found there, in the directory pointed to by\n\
- environment variable GNUCHESS_PKGDATADIR.\n\
+ The file 'gnuchess.ini' allows setting config options if --uci is not\n\
+ used. See 'info gnuchess' for details. The file is looked in three\n\
+ locations according to this precedence: current directory, the\n\
+ directory pointed to by environment variable GNUCHESS_PKGDATADIR,\n\
+ or the package data directory stated at configure time.\n\
 \n"), stdout );
       fputs( _("\
 Report bugs to <bug-gnu-chess@gnu.org>.\n\

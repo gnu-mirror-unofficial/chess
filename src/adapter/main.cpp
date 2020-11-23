@@ -168,7 +168,7 @@ static void parse_option() {
    file_name = option_get_string("OptionFile");
 
    file = fopen(file_name,"r");
-   if (file == NULL) fprintf( stderr,"Can't open file \"%s\": %s - using defaults\n",file_name,strerror(errno));
+   if (file == NULL) my_fatal( "Can't open file \"%s\": %s - using defaults\n",file_name,strerror(errno));
 
    // PolyGlot options (assumed first)
 

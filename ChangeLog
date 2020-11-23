@@ -1,3 +1,7 @@
+2020-11-23  Antonio Ceballos  <aceballos@gmail.com>
+
+	* Better help about integration with XBoard
+
 2020-11-02  Antonio Ceballos  <aceballos@gmail.com>
 
 	* Basic test for command 'pgnsave'

@@ -1094,13 +1094,13 @@ Users are encouraged to provide it.
 @cindex xboard
 @cindex winboard
 Running the program with the "--xboard" command line parameter sets it
-to produce output acceptable to and accept input suitable for XBoard
-and WinBoard, the graphical display front-ends with mouse interface.
+to produce output acceptable to and accept input suitable for XBoard,
+the graphical display front-end with mouse interface.
 
 For historical reasons the option "xboard" does not need to be
-preceeded by "--", however we would encourage the new syntax.
+preceeded by "--"; however we would encourage the new syntax.
 
-How to run XBoard with GNU Chess as chess backend:
+How to run XBoard with GNU Chess as backend (first chess engine):
 
 @example
 xboard -fcp 'gnuchess --xboard'
