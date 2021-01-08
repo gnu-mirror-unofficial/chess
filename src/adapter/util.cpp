@@ -60,11 +60,6 @@ void util_init() {
    // init log file
 
    LogFile = NULL;
-
-   // switch file buffering off
-
-   setbuf(stdin,NULL);
-   setbuf(stdout,NULL);
 }
 
 // my_random_init()

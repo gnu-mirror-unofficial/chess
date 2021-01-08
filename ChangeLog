@@ -1,3 +1,7 @@
+2021-01-08  Antonio Ceballos  <aceballos@gmail.com>
+
+	* Do not modify stdin/stdout buffering from adapter thread
+
 2020-11-23  Antonio Ceballos  <aceballos@gmail.com>
 
 	* Better help about integration with XBoard
