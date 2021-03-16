@@ -539,7 +539,7 @@ void ForwardEngineOutputToUser( void )
   fd_set set[1];
   struct timeval time_val[1];
   int engineinputready=0;
-  char engineinputaux[BUF_SIZE]="";
+  char engineinputaux[BUF_SIZE+1]="";
 
   /* Poll input from engine in non-blocking mode */
   FD_ZERO(set);
@@ -552,11 +552,15 @@ void ForwardEngineOutputToUser( void )
     printf( "Error reading engine input.\n" );
   } else if ( engineinputready > 0 ) {
     /* There are some data from the engine. Read the data */
-    strncpy( engineinputaux, zerochar, BUF_SIZE );
-    nread = read( pipefd_e2a[0], engineinputaux, BUF_SIZE );
+    strncpy( engineinputaux, zerochar, BUF_SIZE+1 );
+    nread = read( pipefd_e2a[0], engineinputaux, BUF_SIZE+1 );
     /* Write data to output */
-    assert( nread < BUF_SIZE-1 );
-    engineinputaux[nread] = '\0';
+    assert( nread <= BUF_SIZE+1 );
+    if (nread < BUF_SIZE+1) {
+      engineinputaux[nread] = '\0';
+    } else {
+      engineinputaux[BUF_SIZE] = '\0';
+    }
     ssize_t r = write( STDOUT_FILENO, engineinputaux, nread );
     if ( r == -1 ) {
       printf( "Error sending message to engine.\n" );
