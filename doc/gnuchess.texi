@@ -1108,6 +1108,12 @@ xboard -fcp 'gnuchess --xboard'
 xboard -fd . -fcp './gnuchess --xboard'
 @end example
 
+How to run XBoard with GNU Chess playing against itself:
+
+@example
+./xboard -fcp './gnuchess -x' -fd . -scp './gnuchess -x' -sd . -pieceImageDirectory 'svg' -matchMode T -tc 1
+@end example
+
 
 @node UCI chess engine
 @section UCI chess engine
