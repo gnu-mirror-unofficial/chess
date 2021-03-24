@@ -1,3 +1,7 @@
+2021-03-24  Antonio Ceballos  <aceballos@gmail.com>
+
+	* Avoid error message after reading EPD file
+
 2021-03-16  Antonio Ceballos  <aceballos@gmail.com>
 
 	* Fix frontend wrongly stripping engine output in UCI mode
