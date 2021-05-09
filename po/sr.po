@@ -1,13 +1,13 @@
 # Serbian translation of gnuchess.
 # Copyright © 2020 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnuchess package.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2013—2020.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2013—2021.
 msgid ""
 msgstr ""
-"Project-Id-Version: gnuchess-6.2.6-pre3\n"
+"Project-Id-Version: gnuchess-6.2.8-pre1\n"
 "Report-Msgid-Bugs-To: bug-gnu-chess@gnu.org\n"
-"POT-Creation-Date: 2020-05-31 09:41+0200\n"
-"PO-Revision-Date: 2020-04-20 09:37+0200\n"
+"POT-Creation-Date: 2021-05-09 17:48+0200\n"
+"PO-Revision-Date: 2021-03-28 18:36+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <(nothing)>\n"
 "Language: sr\n"
@@ -16,7 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.7.1\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 
 #: src/main.cc:325
@@ -112,12 +111,12 @@ msgstr "Тражи у дубину до %d.\n"
 #: src/frontend/cmd.cc:262
 #, c-format
 msgid "Hashing is on.\n"
-msgstr "Хеширање је укључено:\n"
+msgstr "Хеширање је укључено.\n"
 
 #: src/frontend/cmd.cc:264
 #, c-format
 msgid "Hashing is off.\n"
-msgstr "Хеширање је искључено:\n"
+msgstr "Хеширање је искључено.\n"
 
 #: src/frontend/cmd.cc:291 src/frontend/cmd.cc:301
 #, c-format
@@ -147,7 +146,7 @@ msgstr "score   — исписује према Гнуу прво најбољи
 msgid "reverse - list by GNU worst result first\n"
 msgstr "score   — исписује према Гнуу прво најгори резултат\n"
 
-#: src/frontend/cmd.cc:326 src/frontend/cmd.cc:1370
+#: src/frontend/cmd.cc:326 src/frontend/cmd.cc:1371
 #, c-format
 msgid "Board is wrong!\n"
 msgstr "Табла је погрешна!\n"
@@ -354,141 +353,146 @@ msgstr ""
 
 #: src/frontend/cmd.cc:841
 msgid ""
-" The file 'gnuchess.ini' allows setting config options. See\n"
-" 'info gnuchess' for details. The file will be looked up in the current\n"
-" directory or, if not found there, in the directory pointed to by\n"
-" environment variable GNUCHESS_PKGDATADIR.\n"
+" The file 'gnuchess.ini' allows setting config options if --uci is not\n"
+" used. See 'info gnuchess' for details. The file is looked in three\n"
+" locations according to this precedence: current directory, the\n"
+" directory pointed to by environment variable GNUCHESS_PKGDATADIR,\n"
+" or the package data directory stated at configure time.\n"
 "\n"
 msgstr ""
-" Датотека „gnuchess.ini“ омогућава постављање опција подешавања. Видите\n"
-" „info gnuchess“ за појединости. Датотека ће бити потражена у текућем\n"
-" директоријуму или, ако је тамо нема, у директоријуму на који указује\n"
-" променљива окружења „GNUCHESS_PKGDATADIR“.\n"
+" Датотека „gnuchess.ini“ омогућава постављање опција подешавања ако се "
+"опција\n"
+" „--uci“ не користи. Видите „info gnuchess“ за појединости. Датотека jе\n"
+" закључана на три локације по следећем реду: у текућем директоријуму, у\n"
+" директоријуму на који указује променљива окружења „GNUCHESS_PKGDATADIR“\n"
+" или у директоријуму података пакета створеног у време подешавања.\n"
 "\n"
 
-#: src/frontend/cmd.cc:847
+#: src/frontend/cmd.cc:848
 msgid ""
 "Report bugs to <bug-gnu-chess@gnu.org>.\n"
 "\n"
-msgstr "Пријавите грешке на <bug-gnu-chess@gnu.org>.\n"
+msgstr ""
+"Пријавите грешке на <bug-gnu-chess@gnu.org>.\n"
+"\n"
 
-#: src/frontend/cmd.cc:895 src/frontend/cmd.cc:1349
+#: src/frontend/cmd.cc:896 src/frontend/cmd.cc:1350
 #, c-format
 msgid "Invalid move: %s\n"
 msgstr "Неисправан потез: %s\n"
 
-#: src/frontend/cmd.cc:909
+#: src/frontend/cmd.cc:910
 #, c-format
 msgid "Coordinate display enabled.\n"
 msgstr "Приказ координата је укључен.\n"
 
-#: src/frontend/cmd.cc:914
+#: src/frontend/cmd.cc:915
 #, c-format
 msgid "Coordinate display disabled.\n"
 msgstr "Приказ координата је искључен.\n"
 
-#: src/frontend/cmd.cc:923
+#: src/frontend/cmd.cc:924
 #, c-format
 msgid "Command 'white' is currently not supported.\n"
 msgstr "Наредба „white“ тренутно није подржана.\n"
 
-#: src/frontend/cmd.cc:955
+#: src/frontend/cmd.cc:956
 #, c-format
 msgid "My rating = %d\n"
 msgstr "Мој пласман = %d\n"
 
-#: src/frontend/cmd.cc:956
+#: src/frontend/cmd.cc:957
 #, c-format
 msgid "Opponent rating = %d\n"
 msgstr "Пласман противника = %d\n"
 
-#: src/frontend/cmd.cc:958
+#: src/frontend/cmd.cc:959
 msgid "time"
 msgstr "време"
 
-#: src/frontend/cmd.cc:960
+#: src/frontend/cmd.cc:961
 msgid "moves"
 msgstr "потези"
 
-#: src/frontend/cmd.cc:965 src/frontend/cmd.cc:972 src/frontend/cmd.cc:981
-#: src/frontend/cmd.cc:990
+#: src/frontend/cmd.cc:966 src/frontend/cmd.cc:973 src/frontend/cmd.cc:982
+#: src/frontend/cmd.cc:991
 #, c-format
 msgid "No. of moves generated = %ld\n"
 msgstr "Бр. направљених потеза = %ld\n"
 
-#: src/frontend/cmd.cc:994
+#: src/frontend/cmd.cc:995
 #, c-format
 msgid "Command 'show eval/score' is currently not supported.\n"
 msgstr "Наредба „show eval/score“ тренутно није подржана.\n"
 
-#: src/frontend/cmd.cc:1001
+#: src/frontend/cmd.cc:1002
 #, c-format
 msgid "Command 'show pin' is currently not supported.\n"
 msgstr "Наредба „show pin“ тренутно није подржана.\n"
 
-#: src/frontend/cmd.cc:1013
+#: src/frontend/cmd.cc:1014
 #, c-format
 msgid "Command 'test' is currently not supported.\n"
 msgstr "Наредба „test“ тренутно није подржана.\n"
 
-#: src/frontend/cmd.cc:1031
+#: src/frontend/cmd.cc:1032
 msgid " Quits the program."
 msgstr " Излази из програма."
 
-#: src/frontend/cmd.cc:1033
+#: src/frontend/cmd.cc:1034
 msgid " In analysis mode this stops analysis, otherwise it quits the program."
 msgstr ""
 " У режиму анализирања зауставља анализирање, у супротном излази из програма."
 
-#: src/frontend/cmd.cc:1035
+#: src/frontend/cmd.cc:1036
 msgid " Produces a help blurb corresponding to this list of commands."
 msgstr " Приказује помоћ која одговара овом списку наредби."
 
-#: src/frontend/cmd.cc:1037
+#: src/frontend/cmd.cc:1038
 msgid " add - compiles book.bin from a pgn book file"
 msgstr " add — преводи „book.bin“ из датотеке пгн књиге"
 
-#: src/frontend/cmd.cc:1038
+#: src/frontend/cmd.cc:1039
 msgid " on - enables use of book (default)"
 msgstr " on — укључује коришћење књиге (подразумевано)"
 
-#: src/frontend/cmd.cc:1039
+#: src/frontend/cmd.cc:1040
 msgid " off - disables use of book"
 msgstr " off искључује коришћење књиге"
 
-#: src/frontend/cmd.cc:1040
+#: src/frontend/cmd.cc:1041
 msgid " worst - plays worst move from book"
 msgstr " worst — игра најгори потез из књиге"
 
-#: src/frontend/cmd.cc:1041
+#: src/frontend/cmd.cc:1042
 msgid " best - plays best move from book"
 msgstr " best — игра најбољи потез из књиге"
 
-#: src/frontend/cmd.cc:1042
+#: src/frontend/cmd.cc:1043
 msgid " prefer - same as 'book on' (default)"
 msgstr " prefer — исто као „book on“ (подразумевано)"
 
-#: src/frontend/cmd.cc:1043
+#: src/frontend/cmd.cc:1044
 msgid " random - plays any move from book"
 msgstr " random — игра било који потез из књиге"
 
-#: src/frontend/cmd.cc:1045
+#: src/frontend/cmd.cc:1046
 msgid " Prints out the version of this program."
 msgstr " Исписује издање овог програма."
 
-#: src/frontend/cmd.cc:1048
+#: src/frontend/cmd.cc:1049
 msgid " Backs up one move in pgn loaded game."
 msgstr " Прави резерву једног потеза у пгн учитаној игри."
 
-#: src/frontend/cmd.cc:1050
+#: src/frontend/cmd.cc:1051
 msgid " Saves the game so far from memory to the file."
 msgstr " Чува игру из меморије у датотеку."
 
-#: src/frontend/cmd.cc:1052
+#: src/frontend/cmd.cc:1053
 msgid " Loads the game in the file into memory."
 msgstr " Учитава игру из датотеке у меморију."
 
-#: src/frontend/cmd.cc:1054
+#: src/frontend/cmd.cc:1055
 msgid ""
 " Loads the game in the file into memory, and enables\n"
 " the commands 'first', 'last', 'next', 'previous'."
@@ -496,19 +500,19 @@ msgstr ""
 " Учитава игру у датотеци у меморију, и укључује\n"
 " наредбе „first“, „last“, „next“, „previous“."
 
-#: src/frontend/cmd.cc:1058
+#: src/frontend/cmd.cc:1059
 msgid " Advances one move in pgn loaded game."
 msgstr " Напредује један потез у пгн учитаној игри."
 
-#: src/frontend/cmd.cc:1060
+#: src/frontend/cmd.cc:1061
 msgid " Goes to begin position of pgn loaded game."
 msgstr " Иде на почетни положај пгн учитане игре."
 
-#: src/frontend/cmd.cc:1062
+#: src/frontend/cmd.cc:1063
 msgid " Goes to end position of pgn loaded game."
 msgstr " Иде на крајњи положај пгн учитане игре."
 
-#: src/frontend/cmd.cc:1065
+#: src/frontend/cmd.cc:1066
 msgid ""
 " Makes the program stop moving. You may now enter moves\n"
 " to reach some position in the future."
@@ -516,15 +520,15 @@ msgstr ""
 " Чини да програм престане да се креће. Сада можете да унесете\n"
 " потезе да достигнете неки будући положај."
 
-#: src/frontend/cmd.cc:1069
+#: src/frontend/cmd.cc:1070
 msgid " Program plays white."
 msgstr " Програм игра белог."
 
-#: src/frontend/cmd.cc:1071
+#: src/frontend/cmd.cc:1072
 msgid " Program plays black."
 msgstr " Програм игра црног."
 
-#: src/frontend/cmd.cc:1073
+#: src/frontend/cmd.cc:1074
 msgid ""
 " Computer takes whichever side is on move and begins its\n"
 " thinking immediately."
@@ -532,7 +536,7 @@ msgstr ""
 " Рачунар заузима страну онога ко је на потезу и одмах\n"
 " започиње његово размишљање."
 
-#: src/frontend/cmd.cc:1076
+#: src/frontend/cmd.cc:1077
 msgid ""
 " Arranges for verbose thinking output showing variation, score,\n"
 " time, depth, etc."
@@ -540,11 +544,11 @@ msgstr ""
 " Ређа за излаз опширног размишљања приказујући промене, резултат,\n"
 " време, дубину, итд."
 
-#: src/frontend/cmd.cc:1079
+#: src/frontend/cmd.cc:1080
 msgid " Turns off verbose thinking output."
 msgstr " Искључује излаз опширног размишљања."
 
-#: src/frontend/cmd.cc:1081
+#: src/frontend/cmd.cc:1082
 msgid ""
 " Lets you input your name. Also writes the log.nnn and\n"
 " corresponding game.nnn files. For details please see\n"
@@ -554,11 +558,11 @@ msgstr ""
 " и одговарајућу „game.nnn“ датотеку. За појединости\n"
 " погледајте одељке обликовања помоћне датотеке."
 
-#: src/frontend/cmd.cc:1085
+#: src/frontend/cmd.cc:1086
 msgid " Mostly used by Internet Chess Server."
 msgstr " Углавном га користи Интернет шаховски сервер."
 
-#: src/frontend/cmd.cc:1087
+#: src/frontend/cmd.cc:1088
 msgid ""
 " This command reactivates a game that has been terminated automatically\n"
 " due to checkmate or no more time on the clock. However, it does not\n"
@@ -570,15 +574,15 @@ msgstr ""
 " услове. Моћи ћете да поништите потез или два или да додате време на\n"
 " сату помоћу „level“ или „time“."
 
-#: src/frontend/cmd.cc:1092
+#: src/frontend/cmd.cc:1093
 msgid " Inputs the estimated rating for computer and for its opponent."
 msgstr " Уноси процењени пласман за рачунар и за његовог противника."
 
-#: src/frontend/cmd.cc:1094
+#: src/frontend/cmd.cc:1095
 msgid " Sets up a new game (i.e. pieces in original positions)."
 msgstr " Подешава нову игру (тј. фигуре на почетне положаје)."
 
-#: src/frontend/cmd.cc:1096
+#: src/frontend/cmd.cc:1097
 msgid ""
 " Inputs time left in game for computer in hundredths of a second.\n"
 " Mostly used by Internet Chess Server."
@@ -586,35 +590,35 @@ msgstr ""
 " Уноси преостало време у игри за рачунар у стотинкама секунде.\n"
 " Углавном га користи Интернет шаховски сервер."
 
-#: src/frontend/cmd.cc:1099
+#: src/frontend/cmd.cc:1100
 msgid " on - enables using the memory hash table to speed up search"
 msgstr " on — укључује коришћење хеш табеле меморије да убрза претрагу"
 
-#: src/frontend/cmd.cc:1100
+#: src/frontend/cmd.cc:1101
 msgid " off - disables the memory hash table"
 msgstr " off — искључује хеш табелу меморије"
 
-#: src/frontend/cmd.cc:1102
+#: src/frontend/cmd.cc:1103
 msgid " Sets the hash table to permit storage of N MB."
 msgstr " Подешава хеш табелу да дозволи складиштење N MB."
 
-#: src/frontend/cmd.cc:1104
+#: src/frontend/cmd.cc:1105
 msgid " on - enables using the null-move heuristic to speed up search"
 msgstr " on — укључује коришћење откривања ништавног потеза да убрза претрагу"
 
-#: src/frontend/cmd.cc:1105
+#: src/frontend/cmd.cc:1106
 msgid " off - disables using the null-move heuristic"
 msgstr " off — искључује коришћење откривања ништавног потеза"
 
-#: src/frontend/cmd.cc:1107
+#: src/frontend/cmd.cc:1108
 msgid " on - enables use of xboard/winboard"
 msgstr " on — укључује коришћење „xboard/winboard“-а"
 
-#: src/frontend/cmd.cc:1108
+#: src/frontend/cmd.cc:1109
 msgid " off - disables use of xboard/winboard"
 msgstr " off — искључује коришћење „xboard/winboard“-а"
 
-#: src/frontend/cmd.cc:1110
+#: src/frontend/cmd.cc:1111
 msgid ""
 " Sets the program to look N ply (half-moves) deep for every\n"
 " search it performs. If there is a checkmate or other condition\n"
@@ -624,7 +628,7 @@ msgstr ""
 " претрагу коју обавља. Ако је дошло до шах-мата или другог услова\n"
 " који не дозвољава ту дубину, онда га неће бити."
 
-#: src/frontend/cmd.cc:1114
+#: src/frontend/cmd.cc:1115
 msgid ""
 " Sets time control to be MOVES in MINUTES, with each move giving\n"
 " an INCREMENT (in seconds, i.e. a Fischer-style clock)."
@@ -632,119 +636,119 @@ msgstr ""
 " Подешава управљање временом на ПОТЕЗА у МИНУТИМА, са сваким потезом\n"
 " који даје ПОВЕЋАЊЕ (у секундама, тј. сат у Фишеровом стилу)."
 
-#: src/frontend/cmd.cc:1118
+#: src/frontend/cmd.cc:1119
 msgid " Loads a position in EPD format from disk into memory."
 msgstr " Учитава положај у ЕПД запису са диска у меморију."
 
-#: src/frontend/cmd.cc:1121
+#: src/frontend/cmd.cc:1122
 msgid " Saves game position into EPD format from memory to disk."
 msgstr " Чува положај игре у ЕПД запису са меморије на диск."
 
-#: src/frontend/cmd.cc:1123
+#: src/frontend/cmd.cc:1124
 msgid " Switches side to move."
 msgstr " Пребацује стране за потез."
 
-#: src/frontend/cmd.cc:1126
+#: src/frontend/cmd.cc:1127
 msgid " Solves the positions in FILENAME."
 msgstr " Решава положаје у НАЗИВУДАТОТЕКЕ."
 
-#: src/frontend/cmd.cc:1128
+#: src/frontend/cmd.cc:1129
 msgid " Backs up two moves in game history."
 msgstr " Прави резерву два потеза у историјату игре."
 
-#: src/frontend/cmd.cc:1130
+#: src/frontend/cmd.cc:1131
 msgid " Backs up one move in game history."
 msgstr " Прави резерву једног потеза у историјату игре."
 
-#: src/frontend/cmd.cc:1132
+#: src/frontend/cmd.cc:1133
 msgid " Displays command line syntax."
 msgstr " Приказује синтаксу линије наредби."
 
-#: src/frontend/cmd.cc:1134
+#: src/frontend/cmd.cc:1135
 msgid " board - displays the current board"
 msgstr " board — приказује текућу таблу"
 
-#: src/frontend/cmd.cc:1135
+#: src/frontend/cmd.cc:1136
 msgid " time - displays the time settings"
 msgstr " time — приказује подешавања времена"
 
-#: src/frontend/cmd.cc:1136
+#: src/frontend/cmd.cc:1137
 msgid " moves - shows all moves using one call to routine"
 msgstr " moves — показује све потезе користећи један позив по рутини"
 
-#: src/frontend/cmd.cc:1137
+#: src/frontend/cmd.cc:1138
 msgid " escape - shows moves that escape from check using one call to routine"
 msgstr ""
 " escape — приказује потезе који измичу провери користећи један позив по "
 "рутини"
 
-#: src/frontend/cmd.cc:1138
+#: src/frontend/cmd.cc:1139
 msgid " noncapture - shows non-capture moves"
 msgstr " noncapture — приказује потезе који не задају шах"
 
-#: src/frontend/cmd.cc:1139
+#: src/frontend/cmd.cc:1140
 msgid " capture - shows capture moves"
 msgstr " capture — приказује потезе који задају шах"
 
-#: src/frontend/cmd.cc:1140
+#: src/frontend/cmd.cc:1141
 msgid " eval [or score] - shows the evaluation per piece and overall"
 msgstr " eval [или score] — приказује процену по фигури и укупност"
 
-#: src/frontend/cmd.cc:1141
+#: src/frontend/cmd.cc:1142
 msgid " game - shows moves in game history"
 msgstr " game — показује потезе у историјату игре"
 
-#: src/frontend/cmd.cc:1142
+#: src/frontend/cmd.cc:1143
 msgid " pin - shows pinned pieces"
 msgstr " pin — показује прикачене фигуре"
 
-#: src/frontend/cmd.cc:1144
+#: src/frontend/cmd.cc:1145
 msgid " movelist - reads in an epd file and shows legal moves for its entries"
 msgstr ""
 " movelist — чита у епд датотеци и показује исправне потезе за њене уносе"
 
-#: src/frontend/cmd.cc:1145
+#: src/frontend/cmd.cc:1146
 msgid ""
 " capture - reads in an epd file and shows legal captures for its entries"
 msgstr ""
 " capture — чита у епд датотеци и показује исправне потезе који задају шах за "
 "њене уносе"
 
-#: src/frontend/cmd.cc:1146
+#: src/frontend/cmd.cc:1147
 msgid " movegenspeed - tests speed of move generator"
 msgstr " movegenspeed — испробава брзину творца потеза"
 
-#: src/frontend/cmd.cc:1147
+#: src/frontend/cmd.cc:1148
 msgid " capturespeed - tests speed of capture move generator"
 msgstr " capturespeed — испробава брзину творца потеза који задају шах"
 
-#: src/frontend/cmd.cc:1148
+#: src/frontend/cmd.cc:1149
 msgid " eval - reads in an epd file and shows evaluation for its entries"
 msgstr " eval — чита у епд датотеци и показује процене за њене уносе"
 
-#: src/frontend/cmd.cc:1149
+#: src/frontend/cmd.cc:1150
 msgid " evalspeed - tests speed of the evaluator"
 msgstr " evalspeed — испробава брзину процењивача"
 
-#: src/frontend/cmd.cc:1151
+#: src/frontend/cmd.cc:1152
 msgid " Shows moves from opening book."
 msgstr " Показује потезе из отворене књиге."
 
-#: src/frontend/cmd.cc:1153
+#: src/frontend/cmd.cc:1154
 msgid " Enables display board in graphic mode."
 msgstr " Укључује приказ табле у графичком режиму."
 
-#: src/frontend/cmd.cc:1155
+#: src/frontend/cmd.cc:1156
 msgid " Disables graphic mode and display classical view."
 msgstr " Искључује графички режим и приказује класичан преглед."
 
-#: src/frontend/cmd.cc:1157
+#: src/frontend/cmd.cc:1158
 msgid ""
 " Displays the chessboard rank and file in both graphic and classical views."
 msgstr ""
 " Приказује ранг шаховске табле и датотеку у графичком и у класичном прегледу."
 
-#: src/frontend/cmd.cc:1159
+#: src/frontend/cmd.cc:1160
 msgid ""
 " Does not display the chessboard rank nor file in either mode (graphic nor "
 "classical)."
@@ -752,7 +756,7 @@ msgstr ""
 " Не приказује ни ранг шаховске табле ни датотеку ни у једном режиму (ни у "
 "графичком ни у класичном)."
 
-#: src/frontend/cmd.cc:1185
+#: src/frontend/cmd.cc:1186
 #, c-format
 msgid ""
 "Help for command '%s' not found.\n"
@@ -761,10 +765,10 @@ msgstr ""
 "Нисам пронашао помоћ за наредбу „%s“.\n"
 "\n"
 
-#: src/frontend/cmd.cc:1187
+#: src/frontend/cmd.cc:1188
 #, c-format
 msgid "List of commands: (help COMMAND to get more help)\n"
-msgstr "Списак наредби: (помоћ НАРЕДБА за више помоћи)\n"
+msgstr "Списак наредби: („help НАРЕДБА“ за више помоћи)\n"
 
 #: src/frontend/engine.cc:316
 #, c-format
@@ -775,46 +779,24 @@ msgstr ""
 "\n"
 "Мој потез је : %s\n"
 
-#. TRANSLATORS: "y" for "yes"
-#: src/frontend/pgn.cc:66
-msgid "y"
-msgstr "д"
-
-#. TRANSLATORS: "n" for "no"
-#: src/frontend/pgn.cc:68
-msgid "n"
-msgstr "н"
-
-#: src/frontend/pgn.cc:73
+#: src/frontend/pgn.cc:67
 #, c-format
-msgid "File with name %s already exists.\n"
-msgstr "Датотека под називом „%s“ већ постоји.\n"
+msgid ""
+"File '%s' already exists. Please delete it first, or choose a different file "
+"name.\n"
+msgstr ""
+"Датотека „%s“ већ постоји. Обришите је прво или изаберите други назив "
+"датотеке.\n"
 
-#. TRANSLATORS: translate "y/n" (yes/no) like you translated "y" and "n" above.
-#: src/frontend/pgn.cc:76
+#: src/frontend/pgn.cc:74
 #, c-format
-msgid "Overwrite file? [y/n]: "
-msgstr "Да препишем датотеку? [y/n]: "
+msgid "Cannot write to file %s\n"
+msgstr "Не могу да пишем у датотеку „%s“\n"
 
-#: src/frontend/pgn.cc:80 src/frontend/pgn.cc:94
-#, c-format
-msgid "Invalid answer! "
-msgstr "Неисправан одговор! "
-
-#: src/frontend/pgn.cc:87
-#, c-format
-msgid "File not saved.\n"
-msgstr "Датотека није сачувана.\n"
-
-#: src/frontend/pgn.cc:91
-#, c-format
-msgid "File %s is overwritten.\n"
-msgstr "Датотека „%s“ је преписана.\n"
-
-#: src/frontend/pgn.cc:209
+#: src/frontend/pgn.cc:184
 #, c-format
 msgid "Cannot open file %s\n"
-msgstr ""
+msgstr "Не могу да отворим датотеку „%s“\n"
 
 #: src/frontend/input.cc:151
 msgid "Black"
@@ -823,6 +805,27 @@ msgstr "Црни"
 #: src/frontend/input.cc:151
 msgid "White"
 msgstr "Бели"
+
+#~ msgid "y"
+#~ msgstr "д"
+
+#~ msgid "n"
+#~ msgstr "н"
+
+#~ msgid "File with name %s already exists.\n"
+#~ msgstr "Датотека под називом „%s“ већ постоји.\n"
+
+#~ msgid "Overwrite file? [y/n]: "
+#~ msgstr "Да препишем датотеку? [y/n]: "
+
+#~ msgid "Invalid answer! "
+#~ msgstr "Неисправан одговор! "
+
+#~ msgid "File not saved.\n"
+#~ msgstr "Датотека није сачувана.\n"
+
+#~ msgid "File %s is overwritten.\n"
+#~ msgstr "Датотека „%s“ је преписана.\n"
 
 #~ msgid "Invalid answer!"
 #~ msgstr "Неисправан одговор!"

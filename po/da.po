@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnuchess 6.2.5-rc3\n"
 "Report-Msgid-Bugs-To: bug-gnu-chess@gnu.org\n"
-"POT-Creation-Date: 2020-05-31 09:41+0200\n"
+"POT-Creation-Date: 2021-05-09 17:48+0200\n"
 "PO-Revision-Date: 2017-07-06 21:10+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -147,7 +147,7 @@ msgstr "bedømmelse - vis med de bedste GNU-resultater først\n"
 msgid "reverse - list by GNU worst result first\n"
 msgstr "omvendt    - vis med de dårligste GNU-resultater først\n"
 
-#: src/frontend/cmd.cc:326 src/frontend/cmd.cc:1370
+#: src/frontend/cmd.cc:326 src/frontend/cmd.cc:1371
 #, c-format
 msgid "Board is wrong!\n"
 msgstr "Brættet er forkert!\n"
@@ -349,11 +349,13 @@ msgstr ""
 " i algebraisk koordinatnotation.\n"
 
 #: src/frontend/cmd.cc:841
+#, fuzzy
 msgid ""
-" The file 'gnuchess.ini' allows setting config options. See\n"
-" 'info gnuchess' for details. The file will be looked up in the current\n"
-" directory or, if not found there, in the directory pointed to by\n"
-" environment variable GNUCHESS_PKGDATADIR.\n"
+" The file 'gnuchess.ini' allows setting config options if --uci is not\n"
+" used. See 'info gnuchess' for details. The file is looked in three\n"
+" locations according to this precedence: current directory, the\n"
+" directory pointed to by environment variable GNUCHESS_PKGDATADIR,\n"
+" or the package data directory stated at configure time.\n"
 "\n"
 msgstr ""
 " Filen »gnuchess.ini« giver mulighed for at angive konfigurations-\n"
@@ -361,7 +363,7 @@ msgstr ""
 " nuværende mappe eller, hvis ikke fundet der, i mappen der peger på\n"
 " miljøvariablen GNUCHESS_PKGDATADIR.\n"
 
-#: src/frontend/cmd.cc:847
+#: src/frontend/cmd.cc:848
 msgid ""
 "Report bugs to <bug-gnu-chess@gnu.org>.\n"
 "\n"
@@ -369,123 +371,123 @@ msgstr ""
 "Rapporter fejl til <bug-gnu-chess@gnu.org>.\n"
 "\n"
 
-#: src/frontend/cmd.cc:895 src/frontend/cmd.cc:1349
+#: src/frontend/cmd.cc:896 src/frontend/cmd.cc:1350
 #, c-format
 msgid "Invalid move: %s\n"
 msgstr "Ugyldigt træk: %s\n"
 
-#: src/frontend/cmd.cc:909
+#: src/frontend/cmd.cc:910
 #, c-format
 msgid "Coordinate display enabled.\n"
 msgstr "Koordinatvisning aktiveret.\n"
 
-#: src/frontend/cmd.cc:914
+#: src/frontend/cmd.cc:915
 #, c-format
 msgid "Coordinate display disabled.\n"
 msgstr "Koordinatvisning deaktiveret.\n"
 
-#: src/frontend/cmd.cc:923
+#: src/frontend/cmd.cc:924
 #, c-format
 msgid "Command 'white' is currently not supported.\n"
 msgstr "Kommandoen »white« er i øjeblikket ikke understøttet.\n"
 
-#: src/frontend/cmd.cc:955
+#: src/frontend/cmd.cc:956
 #, c-format
 msgid "My rating = %d\n"
 msgstr "Min bedømmelse = %d\n"
 
-#: src/frontend/cmd.cc:956
+#: src/frontend/cmd.cc:957
 #, c-format
 msgid "Opponent rating = %d\n"
 msgstr "Modstanderens bedømmelse = %d\n"
 
-#: src/frontend/cmd.cc:958
+#: src/frontend/cmd.cc:959
 msgid "time"
 msgstr "tid"
 
-#: src/frontend/cmd.cc:960
+#: src/frontend/cmd.cc:961
 msgid "moves"
 msgstr "træk"
 
-#: src/frontend/cmd.cc:965 src/frontend/cmd.cc:972 src/frontend/cmd.cc:981
-#: src/frontend/cmd.cc:990
+#: src/frontend/cmd.cc:966 src/frontend/cmd.cc:973 src/frontend/cmd.cc:982
+#: src/frontend/cmd.cc:991
 #, c-format
 msgid "No. of moves generated = %ld\n"
 msgstr "Antal oprettede træk = %ld\n"
 
-#: src/frontend/cmd.cc:994
+#: src/frontend/cmd.cc:995
 #, c-format
 msgid "Command 'show eval/score' is currently not supported.\n"
 msgstr "Kommandoen »show eval/score« er i øjeblikket ikke understøttet.\n"
 
-#: src/frontend/cmd.cc:1001
+#: src/frontend/cmd.cc:1002
 #, c-format
 msgid "Command 'show pin' is currently not supported.\n"
 msgstr "Kommandoen »show pin« er i øjeblikket ikke understøttet.\n"
 
-#: src/frontend/cmd.cc:1013
+#: src/frontend/cmd.cc:1014
 #, c-format
 msgid "Command 'test' is currently not supported.\n"
 msgstr "Kommandoen »test« er i øjeblikket ikke understøttet.\n"
 
-#: src/frontend/cmd.cc:1031
+#: src/frontend/cmd.cc:1032
 msgid " Quits the program."
 msgstr " Afslutter programmet."
 
-#: src/frontend/cmd.cc:1033
+#: src/frontend/cmd.cc:1034
 msgid " In analysis mode this stops analysis, otherwise it quits the program."
 msgstr " I analysetilstand stopper dette analyse, ellers afsluttes programmet."
 
-#: src/frontend/cmd.cc:1035
+#: src/frontend/cmd.cc:1036
 msgid " Produces a help blurb corresponding to this list of commands."
 msgstr ""
 " Laver en taleboble med hjælpetekst svarende til denne liste af kommandoer."
 
-#: src/frontend/cmd.cc:1037
+#: src/frontend/cmd.cc:1038
 msgid " add - compiles book.bin from a pgn book file"
 msgstr " add - kompilerer book.bin fra en pgn-bogfil"
 
-#: src/frontend/cmd.cc:1038
+#: src/frontend/cmd.cc:1039
 msgid " on - enables use of book (default)"
 msgstr " on - aktiverer brug af bog (standard)"
 
-#: src/frontend/cmd.cc:1039
+#: src/frontend/cmd.cc:1040
 msgid " off - disables use of book"
 msgstr " off - deaktiverer brugen af bog"
 
-#: src/frontend/cmd.cc:1040
+#: src/frontend/cmd.cc:1041
 msgid " worst - plays worst move from book"
 msgstr " worst - værste træk fra bog anvendes"
 
-#: src/frontend/cmd.cc:1041
+#: src/frontend/cmd.cc:1042
 msgid " best - plays best move from book"
 msgstr " best - bedste træk fra bog anvendes"
 
-#: src/frontend/cmd.cc:1042
+#: src/frontend/cmd.cc:1043
 msgid " prefer - same as 'book on' (default)"
 msgstr " prefer - svarer til »book on« (standard)"
 
-#: src/frontend/cmd.cc:1043
+#: src/frontend/cmd.cc:1044
 msgid " random - plays any move from book"
 msgstr " random - vilkårligt træk fra bog"
 
-#: src/frontend/cmd.cc:1045
+#: src/frontend/cmd.cc:1046
 msgid " Prints out the version of this program."
 msgstr " Viser programmets versionsnummer."
 
-#: src/frontend/cmd.cc:1048
+#: src/frontend/cmd.cc:1049
 msgid " Backs up one move in pgn loaded game."
 msgstr " Gemmer et træk i pgn-indlæst spil."
 
-#: src/frontend/cmd.cc:1050
+#: src/frontend/cmd.cc:1051
 msgid " Saves the game so far from memory to the file."
 msgstr " Gemmer spillet indtil nu fra hukommelsen til filen."
 
-#: src/frontend/cmd.cc:1052
+#: src/frontend/cmd.cc:1053
 msgid " Loads the game in the file into memory."
 msgstr " Indlæser spillet i filen i hukommelsen."
 
-#: src/frontend/cmd.cc:1054
+#: src/frontend/cmd.cc:1055
 msgid ""
 " Loads the game in the file into memory, and enables\n"
 " the commands 'first', 'last', 'next', 'previous'."
@@ -493,19 +495,19 @@ msgstr ""
 " Indlæser spillet i filen i hukommelsen, og aktiverer\n"
 " kommandoerne »first«, »last«, »next«, »previous«."
 
-#: src/frontend/cmd.cc:1058
+#: src/frontend/cmd.cc:1059
 msgid " Advances one move in pgn loaded game."
 msgstr " Går et træk frem i pgn-indlæst spil."
 
-#: src/frontend/cmd.cc:1060
+#: src/frontend/cmd.cc:1061
 msgid " Goes to begin position of pgn loaded game."
 msgstr " Går til startpositionen for pgn-indlæst spil."
 
-#: src/frontend/cmd.cc:1062
+#: src/frontend/cmd.cc:1063
 msgid " Goes to end position of pgn loaded game."
 msgstr " Går til slutpositionen for pgn-indlæst spil."
 
-#: src/frontend/cmd.cc:1065
+#: src/frontend/cmd.cc:1066
 msgid ""
 " Makes the program stop moving. You may now enter moves\n"
 " to reach some position in the future."
@@ -513,15 +515,15 @@ msgstr ""
 " Programmet stopper sine træk. Du kan nu indtaste træk\n"
 " for at nå en senere position."
 
-#: src/frontend/cmd.cc:1069
+#: src/frontend/cmd.cc:1070
 msgid " Program plays white."
 msgstr " Programmet spiller med hvide brikker."
 
-#: src/frontend/cmd.cc:1071
+#: src/frontend/cmd.cc:1072
 msgid " Program plays black."
 msgstr " Programmet spiller med sorte brikker."
 
-#: src/frontend/cmd.cc:1073
+#: src/frontend/cmd.cc:1074
 msgid ""
 " Computer takes whichever side is on move and begins its\n"
 " thinking immediately."
@@ -529,7 +531,7 @@ msgstr ""
 " Computeren bruger den side som har trækket og begynder\n"
 " sine overvejelser med det samme."
 
-#: src/frontend/cmd.cc:1076
+#: src/frontend/cmd.cc:1077
 msgid ""
 " Arranges for verbose thinking output showing variation, score,\n"
 " time, depth, etc."
@@ -537,11 +539,11 @@ msgstr ""
 " Opsætter uddybende overvejelser der viser variation, bedømmelse,\n"
 " tid, dybde etc."
 
-#: src/frontend/cmd.cc:1079
+#: src/frontend/cmd.cc:1080
 msgid " Turns off verbose thinking output."
 msgstr " Deaktiverer visnig af uddybende overvejelser."
 
-#: src/frontend/cmd.cc:1081
+#: src/frontend/cmd.cc:1082
 msgid ""
 " Lets you input your name. Also writes the log.nnn and\n"
 " corresponding game.nnn files. For details please see\n"
@@ -551,11 +553,11 @@ msgstr ""
 " log.nnn og tilsvarende game.nnn-filer. Se afsnittene\n"
 " for de ekstra filformater for detaljer."
 
-#: src/frontend/cmd.cc:1085
+#: src/frontend/cmd.cc:1086
 msgid " Mostly used by Internet Chess Server."
 msgstr " Hovedsagelig brugt af Internet Chess Server."
 
-#: src/frontend/cmd.cc:1087
+#: src/frontend/cmd.cc:1088
 msgid ""
 " This command reactivates a game that has been terminated automatically\n"
 " due to checkmate or no more time on the clock. However, it does not\n"
@@ -567,16 +569,16 @@ msgstr ""
 " betingelser, så du skal genskabe et træk eller to, eller tilføje ekstra\n"
 " tid til uret med »level« eller »time«."
 
-#: src/frontend/cmd.cc:1092
+#: src/frontend/cmd.cc:1093
 msgid " Inputs the estimated rating for computer and for its opponent."
 msgstr ""
 " Indsætter den estimerede bedømmelse for computeren og dennes modstander."
 
-#: src/frontend/cmd.cc:1094
+#: src/frontend/cmd.cc:1095
 msgid " Sets up a new game (i.e. pieces in original positions)."
 msgstr " Opsætter et nyt spil (dvs. brikker i oprindelige positioner)."
 
-#: src/frontend/cmd.cc:1096
+#: src/frontend/cmd.cc:1097
 msgid ""
 " Inputs time left in game for computer in hundredths of a second.\n"
 " Mostly used by Internet Chess Server."
@@ -584,35 +586,35 @@ msgstr ""
 " Indsætter resterende tid i spillet for computeren i hundreddele af\n"
 " et sekund. Hovedsagelig brugt af Internet Chess Server."
 
-#: src/frontend/cmd.cc:1099
+#: src/frontend/cmd.cc:1100
 msgid " on - enables using the memory hash table to speed up search"
 msgstr " on - aktiverer brug af hukommelseshashtabel så søgning er hurtigere"
 
-#: src/frontend/cmd.cc:1100
+#: src/frontend/cmd.cc:1101
 msgid " off - disables the memory hash table"
 msgstr " off - deaktiverer hukommelseshashtabel"
 
-#: src/frontend/cmd.cc:1102
+#: src/frontend/cmd.cc:1103
 msgid " Sets the hash table to permit storage of N MB."
 msgstr " Angiver at hashtabellen tillader et lager på n MB."
 
-#: src/frontend/cmd.cc:1104
+#: src/frontend/cmd.cc:1105
 msgid " on - enables using the null-move heuristic to speed up search"
 msgstr " on - aktiverer brug af »null-move«-heuristik så søgning er hurtigere"
 
-#: src/frontend/cmd.cc:1105
+#: src/frontend/cmd.cc:1106
 msgid " off - disables using the null-move heuristic"
 msgstr " off - deaktiverer brug af »null-move«-heuristik"
 
-#: src/frontend/cmd.cc:1107
+#: src/frontend/cmd.cc:1108
 msgid " on - enables use of xboard/winboard"
 msgstr " on - aktiverer brug af xboard/winboard"
 
-#: src/frontend/cmd.cc:1108
+#: src/frontend/cmd.cc:1109
 msgid " off - disables use of xboard/winboard"
 msgstr " off - deaktiverer brug af xboard/winboard"
 
-#: src/frontend/cmd.cc:1110
+#: src/frontend/cmd.cc:1111
 msgid ""
 " Sets the program to look N ply (half-moves) deep for every\n"
 " search it performs. If there is a checkmate or other condition\n"
@@ -622,7 +624,7 @@ msgstr ""
 " hver søgning der udføres. Hvis der er skakmat eller en anden\n"
 " betingelse, som ikke tillader den dybde, så søges ikke længere."
 
-#: src/frontend/cmd.cc:1114
+#: src/frontend/cmd.cc:1115
 msgid ""
 " Sets time control to be MOVES in MINUTES, with each move giving\n"
 " an INCREMENT (in seconds, i.e. a Fischer-style clock)."
@@ -630,117 +632,117 @@ msgstr ""
 " Angiver tidskontrol som TRÆK i MINUTTER, hvor hvert træk\n"
 " angiver et TRIN (i sekunder, dvs. et ur i Fischerstil)."
 
-#: src/frontend/cmd.cc:1118
+#: src/frontend/cmd.cc:1119
 msgid " Loads a position in EPD format from disk into memory."
 msgstr " Indlæser en position i EPD-format fra disk til hukommelse."
 
-#: src/frontend/cmd.cc:1121
+#: src/frontend/cmd.cc:1122
 msgid " Saves game position into EPD format from memory to disk."
 msgstr " Gemmer spilposition i EPD-format fra hukommelse til disk."
 
-#: src/frontend/cmd.cc:1123
+#: src/frontend/cmd.cc:1124
 msgid " Switches side to move."
 msgstr " Skifter side til den der har trækket."
 
-#: src/frontend/cmd.cc:1126
+#: src/frontend/cmd.cc:1127
 msgid " Solves the positions in FILENAME."
 msgstr " Løser positionerne i FILNAVN."
 
-#: src/frontend/cmd.cc:1128
+#: src/frontend/cmd.cc:1129
 msgid " Backs up two moves in game history."
 msgstr " Gemmer to træk i spilhistorikken."
 
-#: src/frontend/cmd.cc:1130
+#: src/frontend/cmd.cc:1131
 msgid " Backs up one move in game history."
 msgstr " Gemmer et træk i spilhistorikken."
 
-#: src/frontend/cmd.cc:1132
+#: src/frontend/cmd.cc:1133
 msgid " Displays command line syntax."
 msgstr " Viser kommandolinjesyntaks."
 
-#: src/frontend/cmd.cc:1134
+#: src/frontend/cmd.cc:1135
 msgid " board - displays the current board"
 msgstr " board (bræt) - viser det aktuelle bræt"
 
-#: src/frontend/cmd.cc:1135
+#: src/frontend/cmd.cc:1136
 msgid " time - displays the time settings"
 msgstr " time (tid) - viser tidsindstillinger"
 
-#: src/frontend/cmd.cc:1136
+#: src/frontend/cmd.cc:1137
 msgid " moves - shows all moves using one call to routine"
 msgstr " moves (træk) - viser alle træk via et kald til »routine«"
 
-#: src/frontend/cmd.cc:1137
+#: src/frontend/cmd.cc:1138
 msgid " escape - shows moves that escape from check using one call to routine"
 msgstr " escape - viser træk som undviger kontrol via et kald til »routine«"
 
-#: src/frontend/cmd.cc:1138
+#: src/frontend/cmd.cc:1139
 msgid " noncapture - shows non-capture moves"
 msgstr " noncapture - viser træk uden slagudveksling"
 
-#: src/frontend/cmd.cc:1139
+#: src/frontend/cmd.cc:1140
 msgid " capture - shows capture moves"
 msgstr " capture - viser træk med salgudveksling"
 
-#: src/frontend/cmd.cc:1140
+#: src/frontend/cmd.cc:1141
 msgid " eval [or score] - shows the evaluation per piece and overall"
 msgstr " eval [eller score] - viser evalueringen per brik og samlet"
 
-#: src/frontend/cmd.cc:1141
+#: src/frontend/cmd.cc:1142
 msgid " game - shows moves in game history"
 msgstr " game - viser træk i spilhistorikken"
 
-#: src/frontend/cmd.cc:1142
+#: src/frontend/cmd.cc:1143
 msgid " pin - shows pinned pieces"
 msgstr " pin - viser låste brikker"
 
-#: src/frontend/cmd.cc:1144
+#: src/frontend/cmd.cc:1145
 msgid " movelist - reads in an epd file and shows legal moves for its entries"
 msgstr ""
 " movelist - læser i en epd-fil og viser lovlige træk for dens elementer"
 
-#: src/frontend/cmd.cc:1145
+#: src/frontend/cmd.cc:1146
 msgid ""
 " capture - reads in an epd file and shows legal captures for its entries"
 msgstr ""
 " capture - læser i en epd-fil og viser lovlige slagudvekslinger for dens "
 "elementer"
 
-#: src/frontend/cmd.cc:1146
+#: src/frontend/cmd.cc:1147
 msgid " movegenspeed - tests speed of move generator"
 msgstr " movegenspeed - tester hastigheden for trækopretteren"
 
-#: src/frontend/cmd.cc:1147
+#: src/frontend/cmd.cc:1148
 msgid " capturespeed - tests speed of capture move generator"
 msgstr " capturespeed - tester hastigheden for slag-trækopretteren"
 
-#: src/frontend/cmd.cc:1148
+#: src/frontend/cmd.cc:1149
 msgid " eval - reads in an epd file and shows evaluation for its entries"
 msgstr " eval - læser i en epd-fil og viser evaluering for dens poster"
 
-#: src/frontend/cmd.cc:1149
+#: src/frontend/cmd.cc:1150
 msgid " evalspeed - tests speed of the evaluator"
 msgstr " evalspeed - tester hastigheden af evaluatoren"
 
-#: src/frontend/cmd.cc:1151
+#: src/frontend/cmd.cc:1152
 msgid " Shows moves from opening book."
 msgstr " Viser træk fra åbningsbog."
 
-#: src/frontend/cmd.cc:1153
+#: src/frontend/cmd.cc:1154
 msgid " Enables display board in graphic mode."
 msgstr " Aktiver visning af brættet i grafisk tilstand."
 
-#: src/frontend/cmd.cc:1155
+#: src/frontend/cmd.cc:1156
 msgid " Disables graphic mode and display classical view."
 msgstr " Deaktiverer grafisk tilstand og viser klassisk visning."
 
-#: src/frontend/cmd.cc:1157
+#: src/frontend/cmd.cc:1158
 msgid ""
 " Displays the chessboard rank and file in both graphic and classical views."
 msgstr ""
 " Viser skakbrætrangeringen og -filen i både grafisk og klassisk visning."
 
-#: src/frontend/cmd.cc:1159
+#: src/frontend/cmd.cc:1160
 #, fuzzy
 msgid ""
 " Does not display the chessboard rank nor file in either mode (graphic nor "
@@ -749,7 +751,7 @@ msgstr ""
 " Viser ikke skakbrætrangeringen eller -filen i en tilstand (hverken grafisk "
 "eller klassisk)"
 
-#: src/frontend/cmd.cc:1185
+#: src/frontend/cmd.cc:1186
 #, fuzzy, c-format
 msgid ""
 "Help for command '%s' not found.\n"
@@ -758,7 +760,7 @@ msgstr ""
 "Hjælp til kommandoen %s blev ikke fundet\n"
 "\n"
 
-#: src/frontend/cmd.cc:1187
+#: src/frontend/cmd.cc:1188
 #, c-format
 msgid "List of commands: (help COMMAND to get more help)\n"
 msgstr "Liste med kommandoer: (help KOMMANDO for at få yderligere hjælp)\n"
@@ -772,43 +774,19 @@ msgstr ""
 "\n"
 "Mit træk er : %s\n"
 
-#. TRANSLATORS: "y" for "yes"
-#: src/frontend/pgn.cc:66
-msgid "y"
+#: src/frontend/pgn.cc:67
+#, c-format
+msgid ""
+"File '%s' already exists. Please delete it first, or choose a different file "
+"name.\n"
 msgstr ""
 
-#. TRANSLATORS: "n" for "no"
-#: src/frontend/pgn.cc:68
-msgid "n"
+#: src/frontend/pgn.cc:74
+#, c-format
+msgid "Cannot write to file %s\n"
 msgstr ""
 
-#: src/frontend/pgn.cc:73
-#, c-format
-msgid "File with name %s already exists.\n"
-msgstr "En fil med navnet %s findes allerede.\n"
-
-#. TRANSLATORS: translate "y/n" (yes/no) like you translated "y" and "n" above.
-#: src/frontend/pgn.cc:76
-#, c-format
-msgid "Overwrite file? [y/n]: "
-msgstr "Overskriv filen? [y/n]: "
-
-#: src/frontend/pgn.cc:80 src/frontend/pgn.cc:94
-#, c-format
-msgid "Invalid answer! "
-msgstr "Ugyldigt svar! "
-
-#: src/frontend/pgn.cc:87
-#, c-format
-msgid "File not saved.\n"
-msgstr "Filen blev ikke gemt.\n"
-
-#: src/frontend/pgn.cc:91
-#, c-format
-msgid "File %s is overwritten.\n"
-msgstr "Filen %s bliver overskrevet.\n"
-
-#: src/frontend/pgn.cc:209
+#: src/frontend/pgn.cc:184
 #, c-format
 msgid "Cannot open file %s\n"
 msgstr ""
@@ -820,6 +798,21 @@ msgstr ""
 #: src/frontend/input.cc:151
 msgid "White"
 msgstr ""
+
+#~ msgid "File with name %s already exists.\n"
+#~ msgstr "En fil med navnet %s findes allerede.\n"
+
+#~ msgid "Overwrite file? [y/n]: "
+#~ msgstr "Overskriv filen? [y/n]: "
+
+#~ msgid "Invalid answer! "
+#~ msgstr "Ugyldigt svar! "
+
+#~ msgid "File not saved.\n"
+#~ msgstr "Filen blev ikke gemt.\n"
+
+#~ msgid "File %s is overwritten.\n"
+#~ msgstr "Filen %s bliver overskrevet.\n"
 
 #~ msgid "Invalid answer!"
 #~ msgstr "Ugyldigt svar!"
