@@ -1,14 +1,20 @@
 TODO of GNU Chess
 
-  Copyright (C) 2001-2017 Free Software Foundation, Inc.
+  Copyright (C) 2001-2021 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
-Items are in random order, mostly reverse chronological.
+Items are roughly ordered by priority.
 
-Top priority:
+* Consider replacing GNUCHESS_PKGDATADIR by the XDG base directory specification.
+
+* Some common files are stale and should be updated:
+config.guess, config.sub, depcomp, install-sh, missing, ylwrap, etc.
+
+* Add instructions to run the program from popular frontends and
+test programs: Knights, Gnome Chess, CuteChess, etc.
 
 * When working in ICS, first game will fail to work post.
 
@@ -24,8 +30,6 @@ http://www.open-aurec.com/wbforum/WinBoard/engine-intf.html
 * End-game table
 
 * Get benefit from multiple-core processors, by sharing search across them.
-
-Normal priority:
 
 * Evaluate the possibility to include an option 'enable/disable bigboard', to show a bigger board.
 
