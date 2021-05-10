@@ -1,3 +1,4 @@
+# File patterns
 *~
 *.bak
 *.o
@@ -9,6 +10,7 @@
 Makefile
 Makefile.in
 
+# Root dir
 /ABOUT-NLS
 /aclocal.m4
 /ar-lib
@@ -22,7 +24,7 @@ Makefile.in
 /configure
 /ylwrap
 
-# Gettext m4 files:
+# m4 files
 /m4
 
 # Doc
