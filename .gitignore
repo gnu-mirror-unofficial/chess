@@ -1,0 +1,40 @@
+*~
+*.bak
+*.o
+*.a
+*.orig
+*.patch
+*.swp
+.deps
+Makefile
+Makefile.in
+
+/ABOUT-NLS
+/aclocal.m4
+/ar-lib
+/autom4te.cache
+/compile
+/config.guess
+/config.log
+/config.rpath
+/config.status
+/config.sub
+/configure
+/ylwrap
+
+# Gettext m4 files:
+/m4
+
+# Doc
+/doc/gnuchess.info
+/doc/mdate-sh
+/doc/stamp-vti
+/doc/texinfo.tex
+/man/gnuchess.1
+
+# src
+/src/gnuchess
+/src/config.h
+/src/configmake.h
+/src/GCint.h
+/src/stamp-h1
