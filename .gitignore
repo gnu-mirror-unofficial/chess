@@ -40,3 +40,7 @@ Makefile.in
 /src/configmake.h
 /src/GCint.h
 /src/stamp-h1
+
+# po
+*.gmo
+/po/remove-potcdate.sed
