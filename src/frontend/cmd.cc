@@ -840,7 +840,7 @@ Play the game of chess.\n\n"), stdout );
 \n"), stdout );
       fputs( _("\
  The file 'gnuchess.ini' allows setting config options if --uci is not\n\
- used. See 'info gnuchess' for details. The file is looked in three\n\
+ used. See 'info gnuchess' for details. The file is looked for in three\n\
  locations according to this precedence: current directory, the\n\
  directory pointed to by environment variable GNUCHESS_PKGDATADIR,\n\
  or the package data directory stated at configure time.\n\
