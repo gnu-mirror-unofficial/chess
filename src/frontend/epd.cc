@@ -326,6 +326,60 @@ void LoadEPD (char *p)
 }
 
 
+void EPD2str (char *pos)
+/**************************************************************************
+ *
+ *  This routine writes the current position in EPD format into a string.
+ *
+ **************************************************************************/
+{
+   int r, c, sq, k;
+   char c1;
+
+   for (r = A8; r >= A1; r -= 8)
+   {
+      k = 0;
+      for (c = 0; c < 8; c++)
+      {
+         sq = r + c;
+         if (cboard[sq] == empty)
+            k++;
+         else
+         {
+            if (k)
+               sprintf(pos + strlen(pos), "%1d", k);
+            k = 0;
+            c1 = notation[cboard[sq]];
+            if (BitPosArray[sq] & board.friends[black])
+               c1 = tolower (c1);
+            sprintf(pos + strlen(pos), "%c", c1);
+         }
+      }
+      if (k)
+         sprintf(pos + strlen(pos), "%1d", k);
+      if (r > A1)
+         sprintf(pos + strlen(pos), "/");
+   }
+
+   /* Print other stuff */
+   sprintf(pos + strlen(pos), (board.side == white ? " w " : " b "));
+
+   if (board.flag & WKINGCASTLE)
+      sprintf(pos + strlen(pos), "K");
+   if (board.flag & WQUEENCASTLE)
+      sprintf(pos + strlen(pos), "Q");
+   if (board.flag & BKINGCASTLE)
+      sprintf(pos + strlen(pos), "k");
+   if (board.flag & BQUEENCASTLE)
+      sprintf(pos + strlen(pos), "q");
+   if (!(board.flag & (WCASTLE | BCASTLE)))
+      sprintf(pos + strlen(pos), "-");
+
+   sprintf(pos + strlen(pos), " %s", (board.ep > -1 ? algbr[board.ep] : "-"));
+   sprintf(pos + strlen(pos), " bm 1; id 1;");
+}
+
+
 void SaveEPD (char *p)
 /**************************************************************************
  *
@@ -335,52 +389,11 @@ void SaveEPD (char *p)
 {
    char file[MAXSTR];
    FILE *fp;
-   int r, c, sq, k;
-   char c1;
+   char pos[MAXSTR] = "";
 
+   EPD2str(pos);
    sscanf (p, "%s ", file);
    fp = fopen (file, "a");
-   for (r = A8; r >= A1; r -= 8)
-   {
-      k = 0;
-      for (c = 0; c < 8; c++)
-      {
-         sq = r + c;
-	 if (cboard[sq] == empty)
-	    k++;
-	 else
-	 {
-	    if (k)
-	       fprintf (fp, "%1d", k);
-	    k = 0;
-	    c1 = notation[cboard[sq]];
-	    if (BitPosArray[sq] & board.friends[black])
-	       c1 = tolower (c1);
-	    fprintf (fp, "%c", c1);
-	 }
-      }
-      if (k)
-	 fprintf (fp, "%1d", k);
-      if (r > A1)
-         fprintf (fp, "/");
-   }
-
-   /* Print other stuff */
-   fprintf (fp, (board.side == white ? " w " : " b "));
-
-   if (board.flag & WKINGCASTLE)
-      fprintf (fp, "K");
-   if (board.flag & WQUEENCASTLE)
-      fprintf (fp, "Q");
-   if (board.flag & BKINGCASTLE)
-      fprintf (fp, "k");
-   if (board.flag & BQUEENCASTLE)
-      fprintf (fp, "q");
-   if (!(board.flag & (WCASTLE | BCASTLE)))
-      fprintf (fp, "-");
-
-   fprintf (fp, " %s", (board.ep > -1 ? algbr[board.ep] : "-"));
-   fprintf (fp, " bm 1; id 1;");
-   fprintf (fp, "\n");
+   fprintf(fp, "%s\n", pos);
    fclose (fp);
 }

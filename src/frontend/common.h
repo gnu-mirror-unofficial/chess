@@ -448,6 +448,7 @@ short ReadEPDFile (const char *, short);
 int ParseEPD (char *);
 void LoadEPD (char *);
 void SaveEPD (char *);
+void EPD2str (char *);
 
 /* Error codes for ParseEPD */
 enum {

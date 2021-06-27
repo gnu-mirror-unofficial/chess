@@ -2,7 +2,7 @@
 
    GNU Chess frontend
 
-   Copyright (C) 2001-2020 Free Software Foundation, Inc.
+   Copyright (C) 2001-2021 Free Software Foundation, Inc.
 
    GNU Chess is based on the two research programs
    Cobalt by Chua Kong-Sian and Gazebo by Stuart Cracraft.
@@ -96,7 +96,7 @@ static int tokeneq(const char *s, const char *t)
 /*
  * Remove a trailing \n and return error if last character is not \n.
  */
-char *trim_newline(char *line)
+static char *trim_newline(char *line)
 {
   char *result = NULL;
   unsigned int last_char_index = strlen(line) - 1;
@@ -105,30 +105,6 @@ char *trim_newline(char *line)
     result = line;
   }
   return result;
-}
-
-/*
- * Reads a PGN file and returns the equivalent EPD content
- *
- * The conversion relies on a temporary file in EPD format,
- * which is removed afterwards.
- */
-static char *load_pgn_as_epd( const char *pgn_filename, char *epdline, int showheading )
-{
-  FILE *epdfile=NULL;
-  char tmp_epd[]=".tmp.epd";
-
-  PGNReadFromFile (pgn_filename, showheading);
-  SaveEPD( tmp_epd );
-  epdfile = fopen( tmp_epd, "r" );
-  char *s = fgets( epdline, MAXSTR, epdfile );
-  fclose( epdfile );
-  remove( tmp_epd );
-  if (s != NULL) {
-    s = trim_newline(epdline);
-  }
-
-  return s;
 }
 
 /*
@@ -162,7 +138,9 @@ char *build_setboard_cmd_from_pgn_file(char *data, const char *pgn_filename)
   char *result = NULL;
   char epdline[MAXSTR]="";
 
-  if (load_pgn_as_epd(pgn_filename, epdline, 0) && strlen(setboard_cmd) + strlen(epdline) < MAXSTR) {
+  PGNReadFromFile (pgn_filename, 0);
+  EPD2str(epdline);
+  if (strlen(setboard_cmd) + strlen(epdline) < MAXSTR) {
     strcpy(data, setboard_cmd);
     strcat(data, epdline);
     result = data;
@@ -385,7 +363,7 @@ void cmd_load(void)
     printf (_("Board is wrong!\n"));
   } else {
     /* Read EPD file and send contents to engine */
-    if (build_setboard_cmd_from_epd_file(data, epd_filename)) {
+    if (build_setboard_cmd_from_epd_file(data, epd_filename)) {  //TODO EPD2str
       SetDataToEngine( data );
       SetAutoGo( true );
     } else {
