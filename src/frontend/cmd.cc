@@ -363,7 +363,7 @@ void cmd_load(void)
     printf (_("Board is wrong!\n"));
   } else {
     /* Read EPD file and send contents to engine */
-    if (build_setboard_cmd_from_epd_file(data, epd_filename)) {  //TODO EPD2str
+    if (build_setboard_cmd_from_epd_file(data, epd_filename)) {
       SetDataToEngine( data );
       SetAutoGo( true );
     } else {
