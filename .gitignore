@@ -44,3 +44,7 @@ Makefile.in
 # po
 *.gmo
 /po/remove-potcdate.sed
+
+# test
+test/catch2/test_cmd
+test/catch2/test_pgn

@@ -367,7 +367,7 @@ void cmd_load(void)
       SetDataToEngine( data );
       SetAutoGo( true );
     } else {
-      printf(_("Error reading EPD file '%s'.\n"), epd_filename );
+      // TODO Error handling?
     }
   }
 }

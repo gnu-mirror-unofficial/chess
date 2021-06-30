@@ -72,8 +72,8 @@ proc run { } {
     test_case "Command: accepted" [list "I accepted" "O White (1)"]
     test_case "Command: activate" [list "I activate" "O currently not supported" "O White (1)"]
     test_case "Command: analyze" [list "I analyze" "O White (1)" "O 1 +" "O 2 +"]
-    test_case "Command: bk" [list "I bk" "O %)" "O White (1)"]
-    test_case "Command: bk" [list "I bk" "O %)" "O White (1)"]
+    test_case "Command: bk" [list "I bk" "O White (1)" "O %)"]
+    test_case "Command: bk" [list "I bk" "O White (1)" "O %)"]
     test_case "Command: black" [list "I black" "O currently not supported" "O White (1)"]
     test_case "Command: white" [list "I white" "O currently not supported" "O White (1)"]
     test_case "Command: book" [list "I book" "O Incorrect book option" "O White (1)"]
@@ -85,7 +85,7 @@ proc run { } {
     # TODO Add more complex cases for hard and post
     test_case "Command: edit" [list "xboard" "I edit" "O not implemented"]
     test_case "Command: edit" [list "I xboard" "I edit" "O not implemented"]
-    test_case "Command: epdload" [list "I epdload" "O Error reading file ''" "O White (1)"]
+    test_case "Command: epdload" [list "I epdload" "O Error opening file"]
     test_case "Command: epdload" [list "I epdload ./Polgar-Karpov.epd" \
                                "O white" \
                                "O . . r . . n k ." \
@@ -231,7 +231,7 @@ proc run { } {
                                "O . . . . R . K ." \
                                "O White (33)"]
     test_case "Command: level" [list "I level 40 1 2" \
-                               "O Time Control: 40 moves in 60.00 secs." \
+                               "O Time control: 40 moves in 60.00 secs." \
                                "O Fischer increment of 2 seconds." \
                                "O White (1)"]
     test_case "Command: list & name & result" [list "I list ?" \
