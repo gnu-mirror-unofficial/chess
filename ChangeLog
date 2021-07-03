@@ -1,3 +1,12 @@
+2021-06-27  Antonio Ceballos  <aceballos@gmail.com>
+
+	* Get rid of temporary EPD file in PGN load operations: .tmp.epd
+	* Fixed CVE-2021-30184: buffer overflow on pgnload and pgnreplay
+
+2021-05-15  Benno Schulenberg  <bensberg@telfort.nl>  (tiny change)
+
+	* More correct usage for gnuchess.ini
+
 2021-05-09  Antonio Ceballos  <aceballos@gmail.com>
 
 	* Release 6.2.8
