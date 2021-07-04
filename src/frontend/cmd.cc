@@ -94,15 +94,17 @@ static int tokeneq(const char *s, const char *t)
 }
 
 /*
- * Remove a trailing \n and return error if last character is not \n.
+ * Remove a trailing \n and return NULL if last character is not \n.
  */
 static char *trim_newline(char *line)
 {
   char *result = NULL;
-  unsigned int last_char_index = strlen(line) - 1;
-  if (line[last_char_index] == '\n') {
-    line[last_char_index] = '\0';
-    result = line;
+  if (line != NULL && strlen(line) > 0) {
+    unsigned int last_char_index = strlen(line) - 1;
+    if (line[last_char_index] == '\n') {
+      line[last_char_index] = '\0';
+      result = line;
+    }
   }
   return result;
 }
@@ -111,20 +113,21 @@ static char *trim_newline(char *line)
  * Takes an EPD filename as input and returns the contents as a
  * 'setboard <epd-position>' command.
  */
-char *build_setboard_cmd_from_epd_file(char *data, const char *epd_filename)
+char *build_setboard_cmd_from_epd_file(char *data, const char *epd_filename, unsigned int data_size)
 {
   char *result = NULL;
-  char epdline[MAXSTR]="";
+  char *epdline = (char *)calloc(data_size, sizeof(char));
 
   FILE *epdfile = fopen(epd_filename, "r");
   if (epdfile != NULL) {
-    if (fgets(epdline, MAXSTR, epdfile) && trim_newline(epdline) && strlen(setboard_cmd) + strlen(epdline) < MAXSTR) {
+    if (fgets(epdline, data_size, epdfile) && trim_newline(epdline) && strlen(setboard_cmd) + strlen(epdline) < data_size) {
       strcpy(data, setboard_cmd);
       strcat(data, epdline);
       result = data;
     }
     fclose(epdfile);
   }
+  free(epdline);
 
   return result;
 }
@@ -133,18 +136,19 @@ char *build_setboard_cmd_from_epd_file(char *data, const char *epd_filename)
  * Takes a PGN filename as input and returns the contents as a
  * 'setboard <epd-position>' command.
  */
-char *build_setboard_cmd_from_pgn_file(char *data, const char *pgn_filename)
+char *build_setboard_cmd_from_pgn_file(char *data, const char *pgn_filename, unsigned int data_size)
 {
   char *result = NULL;
-  char epdline[MAXSTR]="";
+  char *epdline = (char *)calloc(data_size, sizeof(char));
 
   PGNReadFromFile (pgn_filename, 0);
   EPD2str(epdline);
-  if (strlen(setboard_cmd) + strlen(epdline) < MAXSTR) {
+  if (strlen(setboard_cmd) + strlen(epdline) < data_size) {
     strcpy(data, setboard_cmd);
     strcat(data, epdline);
     result = data;
   }
+  free(epdline);
 
   return result;
 }
@@ -363,7 +367,7 @@ void cmd_load(void)
     printf (_("Board is wrong!\n"));
   } else {
     /* Read EPD file and send contents to engine */
-    if (build_setboard_cmd_from_epd_file(data, epd_filename)) {
+    if (build_setboard_cmd_from_epd_file(data, epd_filename, MAXSTR)) {
       SetDataToEngine( data );
       SetAutoGo( true );
     } else {
@@ -475,6 +479,23 @@ void cmd_otim(void)
    SetDataToEngine( token[0] );
 }
 
+int pgnload(const char *pgn_filename)
+{
+  int pgnloaded;
+  char data[MAXSTR]="";
+
+  pgnloaded = 0;
+  if (build_setboard_cmd_from_pgn_file(data, pgn_filename, MAXSTR)) {
+    SetDataToEngine( data );
+    SetAutoGo( true );
+    pgnloaded = 1;
+  } else {
+    printf( _("Error loading PGN file '%s'.\n"), pgn_filename );
+    pgnloaded = 0;
+  }
+  return pgnloaded;
+}
+
 /*
  * Load a file containing a game in PGN format.
  *
@@ -485,23 +506,15 @@ void cmd_otim(void)
  */
 void cmd_pgnload(void)
 {
-  const char *pgn_filename = token[1];
-  char data[MAXSTR]="";
-
-  pgnloaded = 0;
-  if (build_setboard_cmd_from_pgn_file(data, pgn_filename)) {
-    SetDataToEngine( data );
-    SetAutoGo( true );
-  } else {
-    printf( _("Error loading PGN file '%s'.\n"), pgn_filename );
-  }
+  pgnload(token[1]);
 }
 
 /* See comment above in cmd_pgnload about PGN -> EPD conversion. */
 void cmd_pgnreplay(void)
 {
-  cmd_pgnload();
-
+  if (!pgnload(token[1])) {
+    return;
+  }
   pgnloaded = 1;
   pgncnt = GameCnt;
 
