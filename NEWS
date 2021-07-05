@@ -6,7 +6,7 @@ NEWS of GNU Chess
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
-Version 6.2.9-pre1 (July 2021)
+Version 6.2.9-pre3 (July 2021)
 
 - Fixed potential buffer overflow in pgnload and pgnreplay (CVE-2021-30184)
 

@@ -98,35 +98,40 @@ static int tokeneq(const char *s, const char *t)
  */
 static char *trim_newline(char *line)
 {
-  char *result = NULL;
-  if (line != NULL && strlen(line) > 0) {
-    unsigned int last_char_index = strlen(line) - 1;
-    if (line[last_char_index] == '\n') {
-      line[last_char_index] = '\0';
-      result = line;
-    }
+  if (line == NULL) {
+    return NULL;
   }
-  return result;
+  const size_t line_len = strlen(line);
+  const size_t last_char_index = strlen(line) - 1;
+  if (line_len <= 0 || line[last_char_index] != '\n') {
+    return NULL;
+  }
+  line[last_char_index] = '\0';
+  return line;
 }
 
 /*
  * Takes an EPD filename as input and returns the contents as a
  * 'setboard <epd-position>' command.
  */
-char *build_setboard_cmd_from_epd_file(char *data, const char *epd_filename, unsigned int data_size)
+static char *build_setboard_cmd_from_epd_file(char *data, const char *epd_filename, unsigned int data_len)
 {
   char *result = NULL;
-  char *epdline = (char *)calloc(data_size, sizeof(char));
+  char *epdline = (char *)calloc(data_len, sizeof(char));
 
-  FILE *epdfile = fopen(epd_filename, "r");
-  if (epdfile != NULL) {
-    if (fgets(epdline, data_size, epdfile) && trim_newline(epdline) && strlen(setboard_cmd) + strlen(epdline) < data_size) {
-      strcpy(data, setboard_cmd);
-      strcat(data, epdline);
-      result = data;
-    }
-    fclose(epdfile);
+  if (epdline == NULL) {
+    return NULL;
   }
+  FILE *epdfile = fopen(epd_filename, "r");
+  if (epdfile == NULL) {
+    return NULL;
+  }
+  if (fgets(epdline, data_len, epdfile) && trim_newline(epdline) && strlen(setboard_cmd) + strlen(epdline) < data_len) {
+    strcpy(data, setboard_cmd);
+    strcat(data, epdline);
+    result = data;
+  }
+  fclose(epdfile);
   free(epdline);
 
   return result;
@@ -136,14 +141,17 @@ char *build_setboard_cmd_from_epd_file(char *data, const char *epd_filename, uns
  * Takes a PGN filename as input and returns the contents as a
  * 'setboard <epd-position>' command.
  */
-char *build_setboard_cmd_from_pgn_file(char *data, const char *pgn_filename, unsigned int data_size)
+static char *build_setboard_cmd_from_pgn_file(char *data, const char *pgn_filename, unsigned int data_len)
 {
   char *result = NULL;
-  char *epdline = (char *)calloc(data_size, sizeof(char));
+  char *epdline = (char *)calloc(data_len, sizeof(char));
 
+  if (epdline == NULL) {
+    return NULL;
+  }
   PGNReadFromFile (pgn_filename, 0);
   EPD2str(epdline);
-  if (strlen(setboard_cmd) + strlen(epdline) < data_size) {
+  if (strlen(setboard_cmd) + strlen(epdline) < data_len) {
     strcpy(data, setboard_cmd);
     strcat(data, epdline);
     result = data;
@@ -151,6 +159,25 @@ char *build_setboard_cmd_from_pgn_file(char *data, const char *pgn_filename, uns
   free(epdline);
 
   return result;
+}
+
+/*
+ * Loads a PGN file. Returns 1 on success, 0 on error.
+ */
+static int pgnload(const char *pgn_filename)
+{
+  int success;
+  char data[MAXSTR]="";
+
+  if (build_setboard_cmd_from_pgn_file(data, pgn_filename, sizeof(data))) {
+    SetDataToEngine( data );
+    SetAutoGo( true );
+    success = 1;
+  } else {
+    printf( _("Error loading PGN file '%s'.\n"), pgn_filename );
+    success = 0;
+  }
+  return success;
 }
 
 void cmd_accepted(void)
@@ -367,11 +394,11 @@ void cmd_load(void)
     printf (_("Board is wrong!\n"));
   } else {
     /* Read EPD file and send contents to engine */
-    if (build_setboard_cmd_from_epd_file(data, epd_filename, MAXSTR)) {
+    if (build_setboard_cmd_from_epd_file(data, epd_filename, strlen(data))) {
       SetDataToEngine( data );
       SetAutoGo( true );
     } else {
-      // TODO Error handling?
+      printf( _("Error loading EPD file '%s'.\n"), epd_filename );
     }
   }
 }
@@ -477,23 +504,6 @@ void cmd_null(void)
 void cmd_otim(void)
 {
    SetDataToEngine( token[0] );
-}
-
-int pgnload(const char *pgn_filename)
-{
-  int pgnloaded;
-  char data[MAXSTR]="";
-
-  pgnloaded = 0;
-  if (build_setboard_cmd_from_pgn_file(data, pgn_filename, MAXSTR)) {
-    SetDataToEngine( data );
-    SetAutoGo( true );
-    pgnloaded = 1;
-  } else {
-    printf( _("Error loading PGN file '%s'.\n"), pgn_filename );
-    pgnloaded = 0;
-  }
-  return pgnloaded;
 }
 
 /*
